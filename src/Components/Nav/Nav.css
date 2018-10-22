@@ -1,0 +1,35 @@
+.nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #222;
+    padding: 20px;
+    color: #c9c9c9;
+}
+#navbuttons {
+    border: none;
+    font-family: Graphik, Helvetica,Arial,sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 0.85429em;
+    letter-spacing: .08em;
+    outline: 0;
+    cursor: pointer;
+    background-color: #222;
+    color: #c9c9c9;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+#navbuttons:hover {
+    color: rgb(177, 38, 38);
+}
+
+#navbuttons:active {
+    color: rgb(177, 38, 38);
+}
+
+
+
+

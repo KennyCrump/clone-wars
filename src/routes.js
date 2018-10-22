@@ -1,6 +1,6 @@
 import React from 'react';
 import {Switch, Route } from 'react-router-dom';
-import Dashboard from './Components/Dashboard'
+import Dashboard from './Components/Dashboard/Dashboard'
 import ChallengeList from './Components/ChallengeList'
 import Profile from './Components/Profile'
 import Login from './Components/Login'
