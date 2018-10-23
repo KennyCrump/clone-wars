@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Nav from './Nav/Nav'
 class Profile extends Component {
     constructor(props) {
         super(props);
@@ -7,7 +7,10 @@ class Profile extends Component {
     }
     render() { 
         return (
+            <div>
+                <Nav />
             <h1>Profile</h1>
+            </div>
         );
     }
 }
