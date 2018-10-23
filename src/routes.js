@@ -7,8 +7,7 @@ import Login from './Components/Login'
 import Challenge from './Components/Challenge';
 import Create from './Components/Create';
 
-export default (
-    <Switch>
+export default <Switch>
         <Route path="/" exact component={Login}/>
         <Route path="/dashboard" component={Dashboard}/>
         <Route path="/challenges" component={ChallengeList}/>
@@ -18,4 +17,3 @@ export default (
 
 
     </Switch>
-)
