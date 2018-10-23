@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Dashboard.css'
-
+import Nav from '../Nav/Nav'
 class Dashboard extends Component {
     constructor(props) {
         super(props);
@@ -8,7 +8,9 @@ class Dashboard extends Component {
     }
     render() { 
         return (
+
             <div className="dashboard">
+            <Nav />
             <div className="Challenges" id="blocks">
                 <h1>Challenges</h1>
             </div>

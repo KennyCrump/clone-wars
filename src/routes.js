@@ -3,7 +3,7 @@ import {Switch, Route } from 'react-router-dom';
 import Dashboard from './Components/Dashboard/Dashboard'
 import ChallengeList from './Components/ChallengeList'
 import Profile from './Components/Profile'
-import Login from './Components/Login'
+import Login from './Components/Login/Login'
 import Challenge from './Components/Challenge/Challenge';
 import Create from './Components/Create';
 
