@@ -1,0 +1,12 @@
+.challengePage{
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+.codeEditor{
+    width: 400px;
+    height: 900px;
+    text-align: left;
+
+}
