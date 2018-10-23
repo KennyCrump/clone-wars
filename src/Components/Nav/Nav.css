@@ -30,6 +30,17 @@
     color: rgb(177, 38, 38);
 }
 
+.user-picture {
+    height: 25px;
+    width: auto;
+    border-radius: 50px;
+    margin-left: 10px
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
 
 
 
