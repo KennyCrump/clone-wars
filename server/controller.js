@@ -37,5 +37,13 @@ module.exports = {
       console.log(err);
     }
     res.redirect("/#/dashboard");
+  },
+
+  checkUser: (req, res) => {
+    if(req.ression.user) {
+      res.status(200).send(req.session.user)
+    } else {
+      res.status(200).send('please login')
+    }
   }
 };
