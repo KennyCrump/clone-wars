@@ -28,6 +28,7 @@ app.use(
   );
 
   app.get('/auth/callback', ctrl.authCallback)
+  app.get('/api/userData', ctrl.checkUser)
 
 
 
