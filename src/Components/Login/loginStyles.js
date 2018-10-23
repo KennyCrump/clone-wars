@@ -10,7 +10,7 @@ export const Button = styled.button `
   border: solid 1px rgb(177, 38, 38);
   // box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
-  font-size: 30px;
+  font-size: 26px;
   font-family: Oswald;
   &:hover {
     background: rgb(177, 38, 38);
