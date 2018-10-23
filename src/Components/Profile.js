@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Nav from './Nav/Nav'
-class ChallengeList extends Component {
+class Profile extends Component {
     constructor(props) {
         super(props);
         this.state = {  }
@@ -9,10 +9,10 @@ class ChallengeList extends Component {
         return (
             <div>
                 <Nav />
-            <h1>ChallengeList</h1>
-            </div> 
+            <h1>Profile</h1>
+            </div>
         );
     }
 }
  
-export default ChallengeList;
+export default Profile;
