@@ -1,0 +1,44 @@
+.Profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.imgdiv {
+    overflow: hidden;
+}
+
+.profilepic {
+    width: 100px;
+    padding: 10px;
+    position: relative;
+}
+
+.userblock {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+#profileblocks {
+    background-color: #222;
+    margin: 30px;
+    width: 80vw;
+    
+}
+
+#profiletext {
+    color: #c9c9c9;
+    border: none;
+    font-family: Graphik, Helvetica,Arial,sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 0.9em;
+    letter-spacing: .08em;
+    padding: 10px;
+}
+
+.userinfo {
+    display: flex;
+}

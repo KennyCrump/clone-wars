@@ -8,8 +8,8 @@ class Dashboard extends Component {
     }
     render() { 
         return (
-            <div className="dashboard">
-            <div className="Challenges" id="blocks">
+            <div className="Dashboard">
+            <div className="challenges" id="blocks">
                 <h1>Challenges</h1>
             </div>
             <div className="create" id="blocks">
