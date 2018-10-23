@@ -26,7 +26,7 @@ class Challenge extends Component {
         let code = this.state.userCode
         this.setState({ solution: eval(code) })
     }
-
+ 
     render() { 
         const options = {
             lineNumbers: true,
