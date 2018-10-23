@@ -1,12 +1,13 @@
-.dashboard {
+.Dashboard {
     display: flex;
     flex-direction: column;
+    align-content: center;
 }
 #blocks {
     background-color: #222;
-    margin: 40px;
-    margin-left: 300px;
-    margin-right: 300px;
+    margin: 30px;
+    margin-left: 100px;
+    margin-right: 100px;
 }
 h1 {
     color: #c9c9c9;

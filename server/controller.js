@@ -40,7 +40,7 @@ module.exports = {
   },
 
   checkUser: (req, res) => {
-    if(req.ression.user) {
+    if(req.session.user) {
       res.status(200).send(req.session.user)
     } else {
       res.status(200).send('please login')
