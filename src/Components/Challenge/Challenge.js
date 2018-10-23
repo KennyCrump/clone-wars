@@ -40,8 +40,9 @@ class Challenge extends Component {
                     options={options}
                     mode='javascript'/>
                     <button onClick={this.runCode}>Run</button>
-
-                    <h2>solution: {this.state.solution}</h2>
+                    <div className='solution'>
+                        <h2>solution: {this.state.solution}</h2>
+                    </div>
                         
                 </div>
             </div>
