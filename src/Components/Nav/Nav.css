@@ -58,7 +58,7 @@
 .rank {
   cursor: pointer;
   width: 35px;
-  height: auto;
+  height: 24px;
   color: white;
   background: #2d2d2d;
   border: solid 2px white;
