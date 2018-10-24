@@ -36,12 +36,12 @@ class Profile extends Component {
               alt=""
             />
               </div>
-            <h2 className="profiletext">username</h2>
+            <h2 className="profiletext">{username}</h2>
             
           </div>
           
             <div className="userinfo">
-            <h4 className="profiletext">email</h4>
+            <h4 className="profiletext">{email}</h4>
 
             {/* <div className='rank-score'> */}
             <h4 className="profiletext">Level: {rank}</h4>
