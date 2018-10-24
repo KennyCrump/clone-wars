@@ -4,7 +4,7 @@ import './Nav.css'
 import {connect} from 'react-redux'
 import {getUserData} from '../../ducks/reducer'
 import axios from 'axios'
-
+import Logo from '../Login/cloud-coding.png'
 class Nav extends Component {
   constructor(props) {
     super(props)
@@ -25,7 +25,10 @@ class Nav extends Component {
     const {username, picture, rank, score} = this.props.user
     return (
       <div className="nav">
+      
         <div className="left-nav">
+        
+        <img className='nav-logo'src={Logo} alt=""/>
         <Link to={"/dashboard"}>
           <button id="navbuttons">Dashboard</button>
           </Link>
@@ -37,9 +40,8 @@ class Nav extends Component {
         <div className='user-info'>
         <span>{username}</span>
         <img className='user-picture' src={picture} alt=""/>
-        <span>{rank}</span>
-        
-        <span>{score}</span>
+        <button className='rank'>1</button>
+        <span className='score' >12</span>
         </div>
         <Link to={"/profile"}>
         {/* <button id="navbuttons">Profile</button> */}

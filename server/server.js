@@ -5,7 +5,7 @@ const session = require('express-session')
 const axios = require('axios')
 const app = express()
 const ctrl = require('./controller')
-const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env
+const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING, ENVIRONMENT} = process.env
 
 app.use(express.json())
 
@@ -17,6 +17,8 @@ app.listen(SERVER_PORT, () => {
   console.log(`server running on port ${SERVER_PORT}`)
 })
 })
+
+
 
 
 app.use(
