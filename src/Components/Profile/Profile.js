@@ -25,7 +25,7 @@ class Profile extends Component {
           </div>
             <div className="userinfo">
             <h4 id="profiletext">kenabenioni@gmail.com</h4>
-            <h4 id="profiletext">Level: 10 </h4>
+            <h4 id="profiletext">Level: 10</h4>
             <h4 id="profiletext">3056</h4>
             </div>
           </div>

@@ -35,3 +35,13 @@ CREATE TABLE completed_challenges (
     solution VARCHAR(4000),
     completed BOOLEAN
 );
+
+insert into challenges (name, instructions, starting_code, difficulty)
+values ('Price of Mangoes', 'There is a "3 for 2" offer on mangoes. For a given quantity and price (per mango), calculate the total cost of the mangoes.', 'function mango(quantity, price){
+
+}', '1')
+
+insert into challenges (name, instructions, starting_code, difficulty)
+values ('Convert a Number to a String!', 'We need a function that can transform a number into a string.', 'function numberToString(num) {
+  // Return a string of the number here!
+}', '1')
