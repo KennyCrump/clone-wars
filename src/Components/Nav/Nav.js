@@ -37,11 +37,20 @@ class Nav extends Component {
           </Link>
         </div>
         <div className="right-nav">
+        <div className="dropdown">
         <div className='user-info'>
         <span>{username}</span>
         <img className='user-picture' src={picture} alt=""/>
-        <button className='rank'>1</button>
-        <span className='score' >12</span>
+        <button className='rank'>{rank}</button>
+        <span className='score' >{score}</span>
+        </div>
+        <div className="dropdown-content">
+        
+          <a href="/#/profile"><i className="fas fa-user fa-1x"></i> View Profile</a>
+          <hr/>
+          <a href="#"><i className="fas fa-sign-out-alt"></i> Sign out</a>
+          
+        </div>
         </div>
         <Link to={"/profile"}>
         {/* <button id="navbuttons">Profile</button> */}
