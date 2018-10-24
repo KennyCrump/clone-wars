@@ -45,5 +45,30 @@ module.exports = {
     } else {
       res.status(200).send('please login')
     }
+  }, 
+  getChallenges: (req, res) => {
+    const db = req.app.get("db");
+    db.get_challenges()
+    .then(response => {
+      console.log(response);
+      res.status(200).send(response);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).send(err);
+    })
+  },
+  challenge: (req, res) => {
+    const db = req.app.get("db");
+    const {id} = req.params;
+    db.one_challenge({id})
+    .then(response => {
+      console.log(response);
+      res.status(200).send(response);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).send(err);
+    })
   }
 };
