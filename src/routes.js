@@ -2,9 +2,9 @@ import React from 'react';
 import {Switch, Route } from 'react-router-dom';
 import Dashboard from './Components/Dashboard/Dashboard'
 import ChallengeList from './Components/ChallengeList'
-import Profile from './Components/Profile'
+import Profile from './Components/Profile/Profile'
 import Login from './Components/Login/Login'
-import Challenge from './Components/Challenge';
+import Challenge from './Components/Challenge/Challenge';
 import Create from './Components/Create';
 
 export default <Switch>
