@@ -11,10 +11,11 @@ class Challenge extends Component {
         super(props);
         this.state = { 
             userCode:
-`function hello(){
-    return 'hello'
+`function add(num1, num2){
+    //Code Here
 }`,
-    solution: ''
+    solution: '',
+    unitTests: [{test: 'add(2, 3)', solution: 5},{test: 'add(7, 4)', solution: 11}]
          }
     }
 
@@ -23,15 +24,27 @@ class Challenge extends Component {
     }
 
     runCode = () =>{
+        let tests = [...this.state.unitTests]
         let code = this.state.userCode
-        this.setState({ solution: eval(code) })
+        for(let i =0; i < tests.length; i++){
+            let unitTest = code + '\n ' + tests[i].test
+            tests[i].userAttempt = eval(unitTest)
+        }
+        this.setState({ unitTests: tests})
     }
- 
+    
     render() { 
         const options = {
             lineNumbers: true,
             theme: 'icecoder'
         }
+        let tests = this.state.unitTests.map(test => {
+            if(test.solution === test.userAttempt){
+                return <p className='passed'>{`${test.test} passed`}</p>
+            }else{
+                return <p className='failed'>{`${test.test} should return ${test.solution} but returned ${test.userAttempt}`}</p>
+            }
+        })
         return (
             <div className='challengePage'>
                 <div className='instructions'><h1>Instructions</h1></div>
@@ -44,7 +57,9 @@ class Challenge extends Component {
                     <button onClick={this.runCode}>Run</button>
                     <div className='solutionWrapper'>
                         <h1 className='textColor'>solution: </h1>
-                        <div className='solutionBox'><p className='textColor'>{this.state.solution}</p></div>
+                        <div className='solutionBox'>
+                            {this.state.unitTests[0].userAttempt ? tests : null}
+                        </div>
                     </div>
                         
                 </div>
