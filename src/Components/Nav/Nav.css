@@ -7,19 +7,18 @@
   align-items: center;
 }
 #navbuttons {
-  border: none;
-  font-family: Graphik, Helvetica, Arial, sans-serif;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-weight: 400;
-  font-size: 0.85429em;
-  letter-spacing: 0.08em;
-  outline: 0;
-  cursor: pointer;
-  background-color: #222;
-  color: #c9c9c9;
-  padding-left: 30px;
-  padding-right: 30px;
+    border: none;
+    font-family: Montserrat;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 1em;
+    outline: 0;
+    cursor: pointer;
+    background-color: #222;
+    color: #c9c9c9;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 #navbuttons:hover {
@@ -93,7 +92,7 @@
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   right: 1px;
-  top: 54px;
+  
   
 }
 

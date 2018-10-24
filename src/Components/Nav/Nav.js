@@ -28,7 +28,7 @@ class Nav extends Component {
       
         <div className="left-nav">
         
-        <img className='nav-logo'src={Logo} alt=""/>
+        <a href='/#/dashboard'><img className='nav-logo'src={Logo} alt=""/></a>
         <Link to={"/dashboard"}>
           <button id="navbuttons">Dashboard</button>
           </Link>
