@@ -8,12 +8,11 @@
 }
 #navbuttons {
     border: none;
-    font-family: Graphik, Helvetica,Arial,sans-serif;
+    font-family: Montserrat;
     font-weight: bold;
     text-transform: uppercase;
     font-weight: 400;
-    font-size: 0.85429em;
-    letter-spacing: .08em;
+    font-size: 1em;
     outline: 0;
     cursor: pointer;
     background-color: #222;

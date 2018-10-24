@@ -29,6 +29,8 @@ app.use(
 
   app.get('/auth/callback', ctrl.authCallback)
   app.get('/api/userData', ctrl.checkUser)
+  app.get('/api/allchallenges', ctrl.getChallenges)
+  app.get('/api/challenge', ctrl.challenge)
 
 
 
