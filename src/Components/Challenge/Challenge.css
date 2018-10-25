@@ -1,9 +1,10 @@
 .challengePage{
     width: 100vw;
-    height: 80vh;
+    margin-top: 50px;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    z-index: 0;
 }
 .instructions{
     width: 600px;
@@ -12,9 +13,7 @@
 }
 .codeEditor{
     width: 600px;
-    height: 1200px;
     text-align: left;
-    padding-top: 400px;
 }
 .solutionBox{
     width: 540px;
