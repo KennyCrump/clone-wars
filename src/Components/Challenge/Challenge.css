@@ -15,6 +15,7 @@
     margin-top: 30px;
     padding-left: 50px;
     padding-right: 50px;
+    text-align: left;
 }
 .codeEditor{
     width: 600px;
@@ -38,7 +39,13 @@
     background-color: rgb(177, 38, 38);
     transition: all 0.3s ease 0s;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  }
+}
+.challengeButtons:disabled{
+    background-color: #303133;
+    color: gray;
+    cursor: default;
+    box-shadow: none;
+}
 .run{
     width: 100px;
 }
@@ -50,18 +57,22 @@
     margin-bottom: 10px;
     margin-left: 5px;
 }
+.CodeMirror{
+    line-height: 1.2em;
+    height: auto;
+}
 .solutionBox{
     width: 540px;
     height: 200px;
     background: #1D1D1B;
-    padding: 30px;
+    padding: 10px 30px;
     overflow-y: auto;
 }
 .textColor{
     color: #c9c9c9;
 }
 .passed{
-    color: green;
+    color: #B8C94B;
 }
 .failed{
     color: rgb(177, 38, 38);

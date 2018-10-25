@@ -16,7 +16,9 @@ class Challenge extends Component {
             userCode: '',
             result: '',
             unitTests: [{}],
-            solution: ''
+            solution: '',
+            completed: false,
+            changes: false
          }
     }
 
@@ -37,7 +39,7 @@ class Challenge extends Component {
     }
 
     updateCode = (newCode) => {
-        this.setState({userCode: newCode})
+        this.setState({userCode: newCode, completed: false})
     }
 
     submitSolution = () => {
@@ -51,21 +53,27 @@ class Challenge extends Component {
         let passedAllTests = true
         let tests = [...this.state.unitTests]
         let code = this.state.userCode
+        let hasErrors = false
         for(let i =0; i < tests.length; i++){
             let unitTest = code + '\n ' + tests[i].test
+
             try{
                 let answer = eval(unitTest)
                 tests[i].userAttempt = answer
             }catch(error){
                 console.error(error)
-                this.setState({error})
+                hasErrors = true
+                this.setState({error: 'There was an error in compiling your code, check your developer console for details.'})
+                tests[i].userAttempt = 'an Error'
             }
+
             if(tests[i].userAttempt != tests[i].result){
                 passedAllTests = false
             }
         }
-        this.setState({ unitTests: tests, completed: passedAllTests, solution: this.state.userCode})
-
+        if(!hasErrors){
+            this.setState({ error: '', unitTests: tests, completed: passedAllTests, solution: this.state.userCode})
+        }
     }
     
     render() { 
@@ -100,17 +108,21 @@ class Challenge extends Component {
                         <h1 className='solutionHeader'>Challenge</h1>
                         <div>
                             {this.state.userCode &&
-                                <CodeMirror value={this.state.userCode} 
+                                <CodeMirror codeMirrorMatchingBracket
+                                value={this.state.userCode} 
                                 onChange={this.updateCode} 
                                 options={options}
                                 mode='javascript'/>
                             }
                         </div>
                         <button className="run challengeButtons" onClick={this.runCode}>Run</button>
-                        {this.state.completed && <button className=" submit challengeButtons">Submit Completed Challenge</button>}
+                        {this.state.completed ? <button className=" submit challengeButtons">Submit Completed Challenge</button>
+                        :
+                        <button className=" submit challengeButtons" disabled>Pass All Tests to Submit</button>}
                         <div className='SolutionWrapper'>
                             <h1 className='textColor solutionHeader'>Solution: </h1>
                             <div className='solutionBox'>
+                                {this.state.error && <p>{this.state.error}</p>}
                                 {tests}
                             </div>
                         </div>     
