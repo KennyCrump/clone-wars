@@ -164,41 +164,7 @@ class Dashboard extends Component {
             <td><button className='rank-dash'>2 </button>Kaleb</td>
             <td>67</td>
           </tr>
-          <tr>
-            <td>1</td>
-            <td><button className='rank-dash'>2 </button>Kaleb</td>
-            <td>67</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td><button className='rank-dash'>2 </button>Kaleb</td>
-            <td>67</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td><button className='rank-dash'>2 </button>Kaleb</td>
-            <td>67</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td><button className='rank-dash'>2 </button>Kaleb</td>
-            <td>67</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td><button className='rank-dash'>2 </button>Kaleb</td>
-            <td>67</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td><button className='rank-dash'>2 </button>Kaleb</td>
-            <td>67</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td><button className='rank-dash'>2 </button>Kaleb</td>
-            <td>67</td>
-          </tr>
+          
         </tbody>
       </table>
          </div>
