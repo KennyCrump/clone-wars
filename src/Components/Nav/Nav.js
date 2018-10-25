@@ -24,22 +24,31 @@ class Nav extends Component {
     console.log(this.props.user)
     const {username, picture, rank, score} = this.props.user
     return (
+      <div className="outer">
       <div className="nav">
-      
         <div className="left-nav">
         
         <a href='/#/dashboard'><img className='nav-logo'src={Logo} alt=""/></a>
         <Link to={"/dashboard"}>
-          <button id="navbuttons">Dashboard</button>
+        {window.location.hash === "#/dashboard" ?
+          <button id="activebutton">Dashboard</button> :
+          <button id="navbuttons">Dashboard</button>}
           </Link>
           <Link to={"/challenges"}>
-          <button id="navbuttons">Challenges</button>
+          {window.location.hash === "#/challenges" ?
+          <button id="activebutton">Challenges</button> :
+          <button id="navbuttons">Challenges</button>}
+          </Link>
+          <Link to={"/about"}>
+          {window.location.hash === "#/about" ?
+          <button id="activebutton">About</button> :
+          <button id="navbuttons">About</button>}
           </Link>
         </div>
         <div className="right-nav">
         <div className="dropdown">
         <div className='user-info'>
-        <span>{username}</span>
+        <span className="username">{username}</span>
         <img className='user-picture' src={picture} alt=""/>
         <button className='rank'>{rank}</button>
         <span className='score' >{score}</span>
@@ -56,6 +65,8 @@ class Nav extends Component {
         {/* <button id="navbuttons">Profile</button> */}
         </Link>
         </div>
+      </div>
+      <hr className="navline"/>
       </div>
     );
   }

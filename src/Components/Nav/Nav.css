@@ -1,3 +1,9 @@
+.outer {
+  position: sticky;
+  top: 0;
+  /* background: #222; */
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
@@ -6,6 +12,7 @@
   color: #c9c9c9;
   align-items: center;
 }
+
 #navbuttons {
     border: none;
     font-family: Montserrat;
@@ -17,8 +24,22 @@
     cursor: pointer;
     background-color: #222;
     color: #c9c9c9;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 35px;
+    padding-right: 35px;
+}
+#activebutton {
+  border: none;
+    font-family: Montserrat;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 1em;
+    outline: 0;
+    cursor: pointer;
+    background-color: #222;
+    color: rgb(177, 38, 38);
+    padding-left: 35px;
+    padding-right: 35px;
 }
 
 #navbuttons:hover {
@@ -48,6 +69,9 @@
   background-color: inherit;
   font-family: inherit;
   margin: 0;
+}
+.username {
+  color: #c9c9c9;
 }
 
 .left-nav {
@@ -116,11 +140,16 @@
 
 hr {
   width: 115px;
-  opacity: .3;
   border: 0;
     height: 0;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  
+    border-bottom: 1px solid #363636;
+}
+
+.navline {
+  margin: 0;
+  border: 1px solid rgb(177, 38, 38);
+  width: 100%;
+  opacity: .85;
 }
 
