@@ -3,11 +3,14 @@ import "./Dashboard.css";
 import Nav from "../Nav/Nav";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import {getUserData} from '../../ducks/reducer'
+import {connect} from 'react-redux'
 
 class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
+        rankedChallenge: [],
       challenges: [],
       challenge: [],
       loading: true
@@ -21,17 +24,28 @@ class Dashboard extends Component {
     });
     const { challenges } = this.state;
 
-    let random = challenges[Math.floor(Math.random() * this.state.challenges.length)];
+    let filterChallenge = challenges.filter((challenge, i) => {
+        return challenge.difficulty > this.props.user.rank
+    })
+    console.log(filterChallenge)
+
+    let random = filterChallenge[Math.floor(Math.random() * filterChallenge.length)];
     this.setState({
         challenge: random
-      }, () => console.log(this.state.challenge)
-    );
-  }
+    }, () => console.log(this.state.challenge)
+);
+}
+    
+    
 
   getRandom = () => {
     const { challenges } = this.state;
-    let random =
-      challenges[Math.floor(Math.random() * this.state.challenges.length)];
+    let filterChallenge = challenges.filter((challenge, i) => {
+        return challenge.difficulty > this.props.user.rank
+    })
+    console.log(filterChallenge)
+
+    let random = filterChallenge[Math.floor(Math.random() * filterChallenge.length)];
     this.setState(
       {
         challenge: random
@@ -40,10 +54,13 @@ class Dashboard extends Component {
     );
   };
 
-  render() {
-      
-    const {name, instructions,difficulty,challenge_id} = this.state.challenge
 
+
+  render() {
+    const {rank, score} = this.props.user
+    const {name, instructions, difficulty, challenge_id} = this.state.challenge
+    
+    console.log(rank)
     console.log(this.state.challenges);
     console.log(this.state.challenge);
     return (
@@ -68,7 +85,7 @@ class Dashboard extends Component {
                 className={
                   difficulty === "3"
                     ? "rank-dash2"
-                    : difficulty === "1"
+                    : difficulty === "1" || difficulty === "2"
                       ? "rank-dash"
                       : difficulty === "5"
                         ? "rank-dash3"
@@ -88,11 +105,19 @@ class Dashboard extends Component {
                 <h1>Create</h1>
             </div> */}
         <div className="leaderboard" id="blocks">
-          <h1>Leaderboard</h1>
+            
+
+
         </div>
       </div>
     );
   }
 }
 
-export default Dashboard;
+function mapStateToProps(state) {
+    return {
+        user: state.user
+    }
+}
+
+export default connect(mapStateToProps, {getUserData})(Dashboard);
