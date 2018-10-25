@@ -6,6 +6,10 @@ import { Link } from "react-router-dom";
 import {getUserData} from '../../ducks/reducer'
 import {connect} from 'react-redux'
 
+
+
+
+
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -13,7 +17,8 @@ class Dashboard extends Component {
         rankedChallenge: [],
       challenges: [],
       challenge: [],
-      loading: true
+      loading: true,
+      users: ['kaleb']
     };
   }
 
@@ -22,12 +27,19 @@ class Dashboard extends Component {
     this.setState({
       challenges: res.data
     });
+
+    // await axios.get('/api/userData').then((response) => {
+    //     this.setState({
+    //         users: response.data
+    //     })
+    //   })
+
     const { challenges } = this.state;
 
     let filterChallenge = challenges.filter((challenge, i) => {
         return challenge.difficulty > this.props.user.rank
     })
-    console.log(filterChallenge)
+    // console.log(filterChallenge)
 
     let random = filterChallenge[Math.floor(Math.random() * filterChallenge.length)];
     this.setState({
@@ -43,7 +55,7 @@ class Dashboard extends Component {
     let filterChallenge = challenges.filter((challenge, i) => {
         return challenge.difficulty > this.props.user.rank
     })
-    console.log(filterChallenge)
+    // console.log(filterChallenge)
 
     let random = filterChallenge[Math.floor(Math.random() * filterChallenge.length)];
     this.setState(
@@ -56,20 +68,27 @@ class Dashboard extends Component {
 
 
 
+
+
+
   render() {
+      let displayUser = this.state.users.map((user, i) => {
+
+      })
     const {rank, score} = this.props.user
     const {name, instructions, difficulty, challenge_id} = this.state.challenge
-    
-    console.log(rank)
-    console.log(this.state.challenges);
-    console.log(this.state.challenge);
+    console.log(this.state.users)
+    // console.log(rank)
+    // console.log(this.state.challenges);
+    // console.log(this.state.challenge);
+
     return (
       <div className="dashboard">
         <Nav />
         <div className="Challenges" id="blocks">
           <div className="left-side">
             <div className="challenge">
-              <h4>Your Next Challenge...</h4>
+              <h3 className='your-challenge'>Your Next Challenge...</h3>
               <Link to={`/challenge/${challenge_id}`}>
                 <button className="train-button">Train</button>
               </Link>
@@ -94,7 +113,7 @@ class Dashboard extends Component {
               >
                 {difficulty}
               </button>
-              <span>{name}</span>
+              <h3>{name}</h3>
             </div>
             <div className="details">
               <p align="left">{instructions}</p>
@@ -104,11 +123,51 @@ class Dashboard extends Component {
         {/* <div className="create" id="blocks">
                 <h1>Create</h1>
             </div> */}
-        <div className="leaderboard" id="blocks">
-            
+        <div className="leaderboard">
+        <table>
+        <thead>
+          <tr>
+              <th>Position</th>
+              <th>User</th>
+              <th>Score</th>
+          </tr>
+        </thead>
 
-
-        </div>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><button className='rank-dash'>2 </button>Kaleb</td>
+            <td>67</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><button className='rank-dash'>2 </button>Kaleb</td>
+            <td>67</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><button className='rank-dash'>2 </button>Kaleb</td>
+            <td>67</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td><button className='rank-dash'>2 </button>Kaleb</td>
+            <td>67</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><button className='rank-dash'>2 </button>Kaleb</td>
+            <td>67</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><button className='rank-dash'>2 </button>Kaleb</td>
+            <td>67</td>
+          </tr>
+          
+        </tbody>
+      </table>
+         </div>
       </div>
     );
   }
