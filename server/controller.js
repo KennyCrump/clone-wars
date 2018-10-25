@@ -92,5 +92,12 @@ module.exports = {
     const {user_id} = req.sessions.user
     db.create_user_solution({user_id, challenge_id, solution, completed})
     res.status(200).send('solution added')
+  },
+
+  getUsers: (req,res) => {
+    const db = req.app.get("db");
+    db.get_users_by_rank().then((response) => {
+      res.status(200).send(response)
+    })
   }
 };
