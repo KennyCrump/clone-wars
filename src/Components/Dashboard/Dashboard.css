@@ -2,12 +2,16 @@
     display: flex;
     flex-direction: column;
     align-content: center;
+    
 }
 #blocks {
+    display: flex;
+
+    height: 280px;
     background-color: #222;
-    margin: 30px;
-    margin-left: 100px;
-    margin-right: 100px;
+    margin: 50px;
+    margin-left: 220px;
+    margin-right: 220px;
 }
 h1 {
     color: #c9c9c9;
@@ -17,4 +21,136 @@ h1 {
     text-transform: uppercase;
     font-weight: 400;
     font-size: 1.5em;
+}
+
+.left-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #262729;
+    height: 100%;
+    width: 43%;
+    color: white;
+    font-size: 16px;
+    font-family: Montserrat
+
+}
+
+.right-side {
+    /* display: flex; */
+    background-color:  #3c3c3c;
+    height: 100%;
+    width: 100%;
+    
+}
+
+.challenge-container {
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.details {
+    margin: 18px;
+    color: white;
+}
+.rank-dash {
+    cursor: pointer;
+  width: 35px;
+  height: 24px;
+  color: white;
+  background: #2d2d2d;
+  border: solid 2px white;
+  /* border-radius: 4px; */
+  font-size: 12px;
+  font-family: Oswald;
+  margin: 0px 20px;
+  transform: skew(-15deg);
+  margin: 18px;
+}
+
+.rank-dash2 {
+    cursor: pointer;
+  width: 35px;
+  height: 24px;
+  color: white;
+  background: #2d2d2d;
+  border: solid 2px #d3a316;
+  /* border-radius: 4px; */
+  font-size: 12px;
+  font-family: Oswald;
+  margin: 0px 20px;
+  transform: skew(-15deg);
+  margin: 18px;
+}
+
+.rank-dash3 {
+    cursor: pointer;
+  width: 35px;
+  height: 24px;
+  color: white;
+  background: #2d2d2d;
+  border: solid 2px #3b7ebb;
+  /* border-radius: 4px; */
+  font-size: 12px;
+  font-family: Oswald;
+  margin: 0px 20px;
+  transform: skew(-15deg);
+  margin: 18px;
+}
+
+.rank-dash4 {
+    cursor: pointer;
+  width: 35px;
+  height: 24px;
+  color: white;
+  background: #2d2d2d;
+  border: solid 2px #846bc4;
+  /* border-radius: 4px; */
+  font-size: 12px;
+  font-family: Oswald;
+  margin: 0px 20px;
+  transform: skew(-15deg);
+  margin: 18px;
+}
+
+
+
+.challenge {
+    margin-left: 15px;
+}
+.train-button {
+    cursor: pointer;
+    width: 50px;
+    margin: 5px;
+    height: 30px;
+    color: white;
+    background: #6795de;
+    border: solid 1px #6795de;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: Oswald;
+}
+
+.skip-button {
+    cursor: pointer;
+    width: 50px;
+    margin: 5px;
+    height: 30px;
+    color: white;
+    background: transparent;
+    border: solid 1px #6795de;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: Oswald;
+}
+
+.skip-button:hover {
+    background: black
+}
+
+.train-button:hover {
+    background: #4ab5ff;
 }
