@@ -84,5 +84,13 @@ module.exports = {
       console.log(err);
       res.status(500).send(err);
     })
+  },
+  submitSolution: (req, res) => {
+    const db = req.app.get("db");
+    const {id: challenge_id} = req.params;
+    const {solution, completed} = req.body
+    const {user_id} = req.sessions.user
+    db.create_user_solution({user_id, challenge_id, solution, completed})
+    res.status(200).send('solution added')
   }
 };

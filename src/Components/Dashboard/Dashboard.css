@@ -6,7 +6,6 @@
 }
 #blocks {
     display: flex;
-
     height: 280px;
     background-color: #222;
     margin: 50px;
@@ -53,6 +52,7 @@ h1 {
 .details {
     margin: 18px;
     color: white;
+    font-size: 18px;
 }
 .rank-dash {
     cursor: pointer;
@@ -66,7 +66,7 @@ h1 {
   font-family: Oswald;
   margin: 0px 20px;
   transform: skew(-15deg);
-  margin: 18px;
+  
 }
 
 .rank-dash2 {
@@ -121,7 +121,7 @@ h1 {
 }
 .train-button {
     cursor: pointer;
-    width: 50px;
+    width: 60px;
     margin: 5px;
     height: 30px;
     color: white;
@@ -135,7 +135,7 @@ h1 {
 
 .skip-button {
     cursor: pointer;
-    width: 50px;
+    width: 60px;
     margin: 5px;
     height: 30px;
     color: white;
@@ -153,4 +153,44 @@ h1 {
 
 .train-button:hover {
     background: #4ab5ff;
+}
+
+.your-challenge {
+    margin-bottom: 15px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    color: white;
+    margin: 10px;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+    
+}
+
+tr:nth-child(even){background-color: #222}
+tr:nth-child(odd){background-color: #222}
+
+th {
+    background-color: #222;
+    color: white;
+   
+}
+td {
+    border-bottom: 1px solid rgb(96,96,96, .4);
+    
+}
+
+.leaderboard {
+    overflow: scroll;
+    display: flex;
+    height: 413px;
+    background-color: #222;
+    margin: 50px;
+    margin-left: 220px;
+    margin-right: 220px;
 }

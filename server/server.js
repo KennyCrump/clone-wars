@@ -12,10 +12,9 @@ app.use(express.json())
 
 massive(CONNECTION_STRING).then((db) => {
   app.set('db', db)
-
-app.listen(SERVER_PORT, () => {
-  console.log(`server running on port ${SERVER_PORT}`)
-})
+  app.listen(SERVER_PORT, () => {
+    console.log(`server running on port ${SERVER_PORT}`)
+  })
 })
 
 
@@ -34,6 +33,7 @@ app.use(
   app.get('/api/allchallenges', ctrl.getChallenges)
   app.get('/api/challenge/:id', ctrl.challenge)
   app.get('/api/difficulty', ctrl.byDifficulty)
+  app.post('/api/challenge/:id', ctrl.submitSolution)
 
 
 

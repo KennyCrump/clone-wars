@@ -8,18 +8,54 @@
 }
 .instructions{
     width: 600px;
-    height: 800px;
-    background: #222
+    height: 700px;
+    background: #1D1D1B;
+}
+.instructionText{
+    margin-top: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 .codeEditor{
     width: 600px;
     text-align: left;
 }
+.challengeButtons{
+    font-family: Oswald;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  letter-spacing: 0.04em;
+  background-color: #222;
+  color: white;
+  border: 2px solid rgb(177, 38, 38);
+  border-radius: 4px;
+  height: 35px;
+  padding: 0px 2px 4px 2px;
+  margin: 14px 10px 10px 10px;
+}
+.challengeButtons:hover {
+    cursor: pointer;
+    background-color: rgb(177, 38, 38);
+    transition: all 0.3s ease 0s;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+.run{
+    width: 100px;
+}
+.submit{
+    width: 250px;
+}
+.solutionHeader{
+    margin: 0;
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
 .solutionBox{
     width: 540px;
-    height: 300px;
-    background: #222;
+    height: 200px;
+    background: #1D1D1B;
     padding: 30px;
+    overflow-y: auto;
 }
 .textColor{
     color: #c9c9c9;
@@ -28,5 +64,5 @@
     color: green;
 }
 .failed{
-    color: red;
+    color: rgb(177, 38, 38);
 }
