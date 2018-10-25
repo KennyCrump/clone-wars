@@ -15,7 +15,8 @@ class Challenge extends Component {
             error: '',
             userCode: '',
             result: '',
-            unitTests: [{}]
+            unitTests: [{}],
+            solution: ''
          }
     }
 
@@ -33,12 +34,17 @@ class Challenge extends Component {
                     unitTests: unitTests
                 })
             })
-            
-
     }
 
     updateCode = (newCode) => {
         this.setState({userCode: newCode})
+    }
+
+    submitSolution = () => {
+        let {solution, completed} = this.state
+        axios.post(`/api/challenge/${this.props.match.params.id}`, {solution, completed}).then(res => {
+
+        })
     }
 
     runCode = () =>{
@@ -48,8 +54,8 @@ class Challenge extends Component {
         for(let i =0; i < tests.length; i++){
             let unitTest = code + '\n ' + tests[i].test
             try{
-                    let answer = eval(unitTest)
-                    tests[i].userAttempt = answer
+                let answer = eval(unitTest)
+                tests[i].userAttempt = answer
             }catch(error){
                 console.error(error)
                 this.setState({error})
@@ -58,7 +64,8 @@ class Challenge extends Component {
                 passedAllTests = false
             }
         }
-        this.setState({ unitTests: tests, completed: passedAllTests})
+        this.setState({ unitTests: tests, completed: passedAllTests, solution: this.state.userCode})
+
     }
     
     render() { 
@@ -85,12 +92,12 @@ class Challenge extends Component {
                 <Nav />
                 <div className='challengePage'>
                     <div className='instructions'><h1>Instructions</h1>
-                        <p className='textColor'>
+                        <p className='textColor instructionText'>
                             {this.state.instructions}
                         </p>
                     </div>
                     <div className='codeEditor'>
-                        <h1>Challenge</h1>
+                        <h1 className='solutionHeader'>Challenge</h1>
                         <div>
                             {this.state.userCode &&
                                 <CodeMirror value={this.state.userCode} 
@@ -99,15 +106,14 @@ class Challenge extends Component {
                                 mode='javascript'/>
                             }
                         </div>
-                        <button onClick={this.runCode}>Run</button>
-                        {this.state.completed && <button>Submit Completed Challenge</button>}
+                        <button className="run challengeButtons" onClick={this.runCode}>Run</button>
+                        {this.state.completed && <button className=" submit challengeButtons">Submit Completed Challenge</button>}
                         <div className='SolutionWrapper'>
-                            <h1 className='textColor'>Solution: </h1>
+                            <h1 className='textColor solutionHeader'>Solution: </h1>
                             <div className='solutionBox'>
                                 {tests}
                             </div>
-                        </div>
-                            
+                        </div>     
                     </div>
                 </div>
             </div>
