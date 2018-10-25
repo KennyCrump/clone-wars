@@ -51,9 +51,12 @@ class Challenge extends Component {
         let code = this.state.userCode
         for(let i =0; i < tests.length; i++){
             let unitTest = code + '\n ' + tests[i].test
-            if(Function(unitTest)){
-                let answer = eval(unitTest)
-                tests[i].userAttempt = answer
+            try{
+                    // eval(unitTest)
+                    let answer = eval(unitTest)
+                    tests[i].userAttempt = answer
+            }catch(error){
+                console.error(error)
             }
             if(tests[i].userAttempt != tests[i].result){
                 passedAllTests = false
