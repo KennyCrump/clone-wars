@@ -12,11 +12,17 @@ class Challenge extends Component {
     constructor(props) {
         super(props);
         this.state = { 
+            hasError: false,
             userCode: '',
-    result: '',
-    unitTests: [{test: 'add(2, 3)', result: 5},{test: 'add(7, 4)', result: 11}]
+            result: '',
+            unitTests: [{}]
          }
     }
+
+    static getDerivedStateFromError(error) {
+        // Update state so the next render will show the fallback UI.
+        return { hasError: true };
+      }
 
     componentDidMount(){
         axios.get(`/api/challenge/${this.props.match.params.id}`).then(res => {
@@ -40,16 +46,27 @@ class Challenge extends Component {
     }
 
     runCode = () =>{
+        let passedAllTests = true
         let tests = [...this.state.unitTests]
         let code = this.state.userCode
         for(let i =0; i < tests.length; i++){
             let unitTest = code + '\n ' + tests[i].test
-            tests[i].userAttempt = eval(unitTest)
+            try{
+                    // eval(unitTest)
+                    let answer = eval(unitTest)
+                    tests[i].userAttempt = answer
+            }catch(error){
+                console.error(error)
+            }
+            if(tests[i].userAttempt != tests[i].result){
+                passedAllTests = false
+            }
         }
-        this.setState({ unitTests: tests})
+        this.setState({ unitTests: tests, completed: passedAllTests})
     }
     
     render() { 
+    
         const options = {
             lineNumbers: true,
             theme: 'icecoder'
@@ -69,12 +86,15 @@ class Challenge extends Component {
         })
         console.log(this.state.unitTests)
         console.log(tests)
+        if(this.state.hasError){
+            return <h1>There was an error compiling your code</h1>
+        }
         return (
             <div>
                 <Nav />
                 <div className='challengePage'>
                     <div className='instructions'><h1>Instructions</h1>
-                        <p>
+                        <p className='textColor'>
                             {this.state.instructions}
                         </p>
                     </div>
@@ -89,6 +109,7 @@ class Challenge extends Component {
                             }
                         </div>
                         <button onClick={this.runCode}>Run</button>
+                        {this.state.completed && <button>Submit Completed Challenge</button>}
                         <div className='SolutionWrapper'>
                             <h1 className='textColor'>Solution: </h1>
                             <div className='solutionBox'>
