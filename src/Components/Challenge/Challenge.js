@@ -12,17 +12,14 @@ class Challenge extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            hasError: false,
+            error: '',
             userCode: '',
             result: '',
-            unitTests: [{}]
+            unitTests: [{}],
+            solution: ''
          }
     }
 
-    static getDerivedStateFromError(error) {
-        // Update state so the next render will show the fallback UI.
-        return { hasError: true };
-      }
 
     componentDidMount(){
         axios.get(`/api/challenge/${this.props.match.params.id}`).then(res => {
@@ -37,12 +34,17 @@ class Challenge extends Component {
                     unitTests: unitTests
                 })
             })
-            
-
     }
 
     updateCode = (newCode) => {
         this.setState({userCode: newCode})
+    }
+
+    submitSolution = () => {
+        let {solution, completed} = this.state
+        axios.post(`/api/challenge/${this.props.match.params.id}`, {solution, completed}).then(res => {
+
+        })
     }
 
     runCode = () =>{
@@ -52,17 +54,18 @@ class Challenge extends Component {
         for(let i =0; i < tests.length; i++){
             let unitTest = code + '\n ' + tests[i].test
             try{
-                    // eval(unitTest)
-                    let answer = eval(unitTest)
-                    tests[i].userAttempt = answer
+                let answer = eval(unitTest)
+                tests[i].userAttempt = answer
             }catch(error){
                 console.error(error)
+                this.setState({error})
             }
             if(tests[i].userAttempt != tests[i].result){
                 passedAllTests = false
             }
         }
-        this.setState({ unitTests: tests, completed: passedAllTests})
+        this.setState({ unitTests: tests, completed: passedAllTests, solution: this.state.userCode})
+
     }
     
     render() { 
@@ -84,22 +87,17 @@ class Challenge extends Component {
                 return <p key={index} className='failed'>{`${test.test} should return ${test.result} but returned ${test.userAttempt}`}</p>
             }
         })
-        console.log(this.state.unitTests)
-        console.log(tests)
-        if(this.state.hasError){
-            return <h1>There was an error compiling your code</h1>
-        }
         return (
             <div>
                 <Nav />
                 <div className='challengePage'>
                     <div className='instructions'><h1>Instructions</h1>
-                        <p className='textColor'>
+                        <p className='textColor instructionText'>
                             {this.state.instructions}
                         </p>
                     </div>
                     <div className='codeEditor'>
-                        <h1>Challenge</h1>
+                        <h1 className='solutionHeader'>Challenge</h1>
                         <div>
                             {this.state.userCode &&
                                 <CodeMirror value={this.state.userCode} 
@@ -108,15 +106,14 @@ class Challenge extends Component {
                                 mode='javascript'/>
                             }
                         </div>
-                        <button onClick={this.runCode}>Run</button>
-                        {this.state.completed && <button>Submit Completed Challenge</button>}
+                        <button className="run challengeButtons" onClick={this.runCode}>Run</button>
+                        {this.state.completed && <button className=" submit challengeButtons">Submit Completed Challenge</button>}
                         <div className='SolutionWrapper'>
-                            <h1 className='textColor'>Solution: </h1>
+                            <h1 className='textColor solutionHeader'>Solution: </h1>
                             <div className='solutionBox'>
                                 {tests}
                             </div>
-                        </div>
-                            
+                        </div>     
                     </div>
                 </div>
             </div>
