@@ -71,12 +71,33 @@ module.exports = {
       res.status(500).send(err);
     })
   },
+  byDifficulty: (req, res) => {
+    const db = req.app.get("db");
+    const {difficulty} = req.body;
+    db.challenge_by_diff({difficulty})
+    .then(response => {
+      console.log(response);
+      console.log(difficulty);
+      res.status(200).send(response);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).send(err);
+    })
+  },
   submitSolution: (req, res) => {
     const db = req.app.get("db");
-    const {challenge_id: id} = req.params;
+    const {id: challenge_id} = req.params;
     const {solution, completed} = req.body
     const {user_id} = req.sessions.user
     db.create_user_solution({user_id, challenge_id, solution, completed})
     res.status(200).send('solution added')
+  },
+
+  getUsers: (req,res) => {
+    const db = req.app.get("db");
+    db.get_users_by_rank().then((response) => {
+      res.status(200).send(response)
+    })
   }
 };

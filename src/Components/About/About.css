@@ -1,0 +1,24 @@
+.aboutsite {
+    background-color: #222;
+}
+
+.techused {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    align-items: flex-end;
+}
+
+.siteimg {
+    width: 100px;
+}
+.techtitle {
+    padding-top: 10px;
+}
+
+#resize {
+    width: 120px;
+}
+
+#htmlimg {
+}
