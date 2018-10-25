@@ -33,6 +33,7 @@ app.use(
   app.get('/api/userData', ctrl.checkUser)
   app.get('/api/allchallenges', ctrl.getChallenges)
   app.get('/api/challenge/:id', ctrl.challenge)
+  app.get('/api/difficulty', ctrl.byDifficulty)
 
 
 

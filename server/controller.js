@@ -70,5 +70,19 @@ module.exports = {
       console.log(err);
       res.status(500).send(err);
     })
+  },
+  byDifficulty: (req, res) => {
+    const db = req.app.get("db");
+    const {difficulty} = req.body;
+    db.challenge_by_diff({difficulty})
+    .then(response => {
+      console.log(response);
+      console.log(difficulty);
+      res.status(200).send(response);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).send(err);
+    })
   }
 };

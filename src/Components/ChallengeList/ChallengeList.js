@@ -8,7 +8,9 @@ class ChallengeList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      challenges: []
+      challenges: [],
+      difficulty: "1"
+
     };
   }
   componentDidMount() {
@@ -16,8 +18,20 @@ class ChallengeList extends Component {
       this.setState({
         challenges: res.data
       });
-    });
+    })
   }
+  handleDifficulty(e){
+      this.setState({difficulty: e})
+  }
+  filterDifficulty(){
+    axios.get("/api/difficulty", {difficulty: this.state.difficulty}).then(res => {
+        console.log(res);
+        this.setState({
+            challenges: res.data
+        })
+    })
+  }
+
 
   render() {
     console.log(this.state);
@@ -61,7 +75,7 @@ class ChallengeList extends Component {
             <hr />
             <div className="difficulty">
               <h4>Difficulty:</h4>
-              <select className="selectdifficulty">
+              <select className="selectdifficulty" onChange={(e)=>{this.handleDifficulty(e.target.value)}}>
                 <option value="1">Level: 1</option>
                 <option value="2">Level: 2</option>
                 <option value="3">Level: 3</option>
