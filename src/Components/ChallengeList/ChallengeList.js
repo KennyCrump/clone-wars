@@ -9,61 +9,77 @@ class ChallengeList extends Component {
     super(props);
     this.state = {
       challenges: [],
-      difficulty: "1"
-
+      challengesDisplayed: [],
+      difficulty: "1",
+      searchInput: ""
     };
   }
   componentDidMount() {
     axios.get("/api/allchallenges").then(res => {
       this.setState({
-        challenges: res.data
+        challenges: res.data,
+        challengesDisplayed: res.data
       });
-    })
+    });
   }
-  handleDifficulty(e){
-      this.setState({difficulty: e})
-  }
-  filterDifficulty(){
-    axios.get("/api/difficulty", {difficulty: this.state.difficulty}).then(res => {
-        console.log(res);
-        this.setState({
-            challenges: res.data
-        })
-    })
+  handleInput(e){
+      this.setState({searchInput: e})
   }
 
+  handleDifficulty(e) {
+    this.setState({ difficulty: e });
+    const {challenges, difficulty} = this.state;
+    // console.log(challenges, e);
+    let newChallenges = challenges.filter(challenge => {
+        return challenge.difficulty === e
+    })
+    this.setState({challengesDisplayed: newChallenges})
+  }
+
+  searchChallenges(){
+    const { challenges, searchInput } = this.state;
+    let newChallenges = challenges.filter(challenge =>
+      challenge.name.toLowerCase().includes(searchInput.toLowerCase())
+    );
+    this.setState({ challengesDisplayed: newChallenges });
+  };
 
   render() {
     console.log(this.state);
-    let challengesToDisplay = this.state.challenges.map((e, i) => {
+    let newChallenges = this.state.challengesDisplayed;
+    if (this.state.searchInput){
+        newChallenges = this.state.challengesDisplayed.filter(challenge =>
+            challenge.name.toLowerCase().includes(this.state.searchInput.toLowerCase())) 
+    }
+    let challengesToDisplay = newChallenges.map((e, i) => {
       return (
-          <div>
-        <div className="list">
-          <div className="namedifficulty">
-            <h1 id="challengeinfo">{e.name}</h1>
-            <h4 id="challengeinfo">Difficulty</h4>
-            <hr />
-            <h4>Level: {e.difficulty}</h4>
-            <Link to={`/challenge/${e.challenge_id}`}>
-              <button className="attempt">Code Me!</button>
-            </Link>
+        <div key={i}>
+          <div className="list">
+            <div className="namedifficulty">
+              <h1 id="challengeinfo">{e.name}</h1>
+              <h4 id="challengeinfo">Difficulty</h4>
+              <hr />
+              <h4>Level: {e.difficulty}</h4>
+              <Link to={`/challenge/${e.challenge_id}`}>
+                <button className="attempt">Code Me!</button>
+              </Link>
+            </div>
+            <div className="instruction">
+              <p>{e.instructions}</p>
+            </div>
           </div>
-          <div className="instruction">
-            <p>{e.instructions}</p>
+          <div className="list-small">
+            <div className="namedifficulty">
+              <h1 id="challengeinfo">{e.name}</h1>
+              <h4 id="challengeinfo">Difficulty</h4>
+              <hr />
+              <h4>Level: {e.difficulty}</h4>
+              <Link to={`/challenge/${e.challenge_id}`}>
+                <button className="attempt">Code Me!</button>
+              </Link>
+            </div>
           </div>
         </div>
-        <div className="list-small">
-        <div className="namedifficulty">
-            <h1 id="challengeinfo">{e.name}</h1>
-            <h4 id="challengeinfo">Difficulty</h4>
-            <hr />
-            <h4>Level: {e.difficulty}</h4>
-            <Link to={`/challenge/${e.challenge_id}`}>
-              <button className="attempt">Code Me!</button>
-            </Link>
-          </div>
-        </div>
-          </div>
       );
     });
     return (
@@ -71,11 +87,17 @@ class ChallengeList extends Component {
         <Nav />
         <div className="content">
           <div className="filter">
-            <input type="text" placeholder="Search" className="searchbar" />
+            <input type="text" placeholder="Search" className="searchbar" onChange={e => {this.handleInput(e.target.value)}}/>
             <hr />
             <div className="difficulty">
               <h4>Difficulty:</h4>
-              <select className="selectdifficulty" onChange={(e)=>{this.handleDifficulty(e.target.value)}}>
+              <select
+                className="selectdifficulty"
+                onChange={e => {
+                  this.handleDifficulty(e.target.value);
+                }}
+              >
+                <option value="select">Select a Level</option>
                 <option value="1">Level: 1</option>
                 <option value="2">Level: 2</option>
                 <option value="3">Level: 3</option>
