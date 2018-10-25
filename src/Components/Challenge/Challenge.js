@@ -12,17 +12,13 @@ class Challenge extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            hasError: false,
+            error: '',
             userCode: '',
             result: '',
             unitTests: [{}]
          }
     }
 
-    static getDerivedStateFromError(error) {
-        // Update state so the next render will show the fallback UI.
-        return { hasError: true };
-      }
 
     componentDidMount(){
         axios.get(`/api/challenge/${this.props.match.params.id}`).then(res => {
@@ -52,11 +48,11 @@ class Challenge extends Component {
         for(let i =0; i < tests.length; i++){
             let unitTest = code + '\n ' + tests[i].test
             try{
-                    // eval(unitTest)
                     let answer = eval(unitTest)
                     tests[i].userAttempt = answer
             }catch(error){
                 console.error(error)
+                this.setState({error})
             }
             if(tests[i].userAttempt != tests[i].result){
                 passedAllTests = false
@@ -84,11 +80,6 @@ class Challenge extends Component {
                 return <p key={index} className='failed'>{`${test.test} should return ${test.result} but returned ${test.userAttempt}`}</p>
             }
         })
-        console.log(this.state.unitTests)
-        console.log(tests)
-        if(this.state.hasError){
-            return <h1>There was an error compiling your code</h1>
-        }
         return (
             <div>
                 <Nav />
