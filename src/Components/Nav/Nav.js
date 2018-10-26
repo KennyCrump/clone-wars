@@ -57,7 +57,7 @@ class Nav extends Component {
         
           <a href="/#/profile"><i className="fas fa-user fa-1x"></i> View Profile</a>
           <hr/>
-          <a href="#"><i className="fas fa-sign-out-alt"></i> Sign out</a>
+          <a href='http://localhost:4444/logout'><i className="fas fa-sign-out-alt"></i> Sign out</a>
           
         </div>
         </div>

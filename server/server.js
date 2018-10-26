@@ -35,6 +35,10 @@ app.use(
   app.get('/api/difficulty', ctrl.byDifficulty)
   app.post('/api/challenge/:id', ctrl.submitSolution)
   app.get('/api/getUsers', ctrl.getUsers)
+  app.get('/logout', ctrl.logout)
+
+
+  
 
 
 

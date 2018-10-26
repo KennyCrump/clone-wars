@@ -99,5 +99,10 @@ module.exports = {
     db.get_users_by_rank().then((response) => {
       res.status(200).send(response)
     })
+  },
+
+  logout: (req,res) => {
+    req.session.destroy()
+    res.redirect('http://localhost:3000/#/')
   }
 };
