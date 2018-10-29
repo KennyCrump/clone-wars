@@ -137,22 +137,10 @@ class Create extends Component {
       }
     });
     console.log(this.state.unitTests);
-    // let unitTestList = this.state.unitTests.map((e, i) => {
-    //     if (i !== 0){
-    //         return (
-    //             <div key={i}>
-    //                 <p>{` Test: ${e.test} Result: ${e.result}`}</p>
-    //                 <button onClick={()=>this.deleteTest(i)}>Delete</button>
-    //             </div>
-    //         )
-    //     }else{
-    //         return null
-    //     }
-    // })
     return (
-      <div>
+      <div className="outercreate">
         <Nav />
-        <div className="create">
+        <div className="creates">
           <div className="create-instructions">
             <h1>Steps to Creating a Challenge</h1>
             <p className="textColor instructionText">
@@ -192,11 +180,11 @@ class Create extends Component {
           </div>
           <div className="mirror-solution">
             <div>
-                <div className="namedifficulty">
+                <div className="namedifficulties">
                 <h3>Challenge Name: </h3>
-                <input type="text" className="challengename" value={this.state.name} onChange={e=>this.setState({name: e.target.value})}/>
+                <input type="text" className="challengenames" value={this.state.name} onChange={e=>this.setState({name: e.target.value})}/>
                 <h3>Difficulty: </h3>
-                <select name="difficulty" className="difficulty" id="" onChange={e=>this.setState({difficulty: e.target.value})} value={this.state.difficulty}>
+                <select name="difficulty" className="difficulties" id="" onChange={e=>this.setState({difficulty: e.target.value})} value={this.state.difficulty}>
                 <option value="1">Level: 1</option>
                 <option value="2">Level: 2</option>
                 <option value="3">Level: 3</option>
@@ -239,14 +227,14 @@ class Create extends Component {
                   <input
                     type="text"
                     value={this.state.newTest}
-                    placeHolder="myFunction(2, 3)"
+                    placeholder="myFunction(2, 3)"
                     onChange={e => this.setState({ newTest: e.target.value })}
                   />
                   <p className="test-text">Result: </p>
                   <input
                     type="text"
                     value={this.state.newResult}
-                    placeHolder="5"
+                    placeholder="5"
                     onChange={e => this.setState({ newResult: e.target.value })}
                   />
                   <button className="test-text" onClick={this.addTest}>

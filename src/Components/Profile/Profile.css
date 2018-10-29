@@ -10,16 +10,14 @@
 
 .profilepic {
     width: 100px;
-    padding: 10px;
+    padding: 20px;
     position: relative;
 }
 
-.userblock {
+/* .userblock {
     display: flex;
-    flex-direction: row;
-    /* align-items: center; */
-    /* justify-content: center; */
-}
+    flex-direction: column;
+} */
 
 .rank-score {
     display: flex;
@@ -46,16 +44,20 @@
     font-weight: 400;
     font-size: 0.9em;
     padding: 10px;
+    /* border: 1px white solid; */
 }
 
 .userinfo {
     display: flex;
+    margin-top: 10px;
+    
+    width: 100%;
+
 }
 
-/* .profile-rank {
-    height: 130px;
-    width: 100px;
-    background-color: #303133;
-    margin-right: 30px;
-    
-}  */
+.bio {
+    width: 95%;
+    margin: 10px;
+
+    /* border: 1px white solid; */
+}
