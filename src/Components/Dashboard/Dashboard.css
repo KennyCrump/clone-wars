@@ -8,9 +8,11 @@
     display: flex;
     height: 280px;
     background-color: #222;
-    margin: 50px;
+    margin-top: 50px;
     margin-left: 220px;
     margin-right: 220px;
+    margin-bottom: 20px;
+    box-shadow: 2px 3px 3px rgb(16, 16, 16);
 }
 h1 {
     color: #c9c9c9;
@@ -190,7 +192,19 @@ td {
     display: flex;
     height: 413px;
     background-color: #222;
-    margin: 50px;
+    margin: 20px;
     margin-left: 220px;
     margin-right: 220px;
 }
+
+.create {
+    display: flex;
+    justify-content: center;
+    
+    height: 150px;
+    background-color: #222;
+    color: white;
+    margin-left: 220px;
+    margin-right: 220px;
+}
+

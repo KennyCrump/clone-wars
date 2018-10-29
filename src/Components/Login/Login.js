@@ -36,7 +36,7 @@ class Login extends Component {
     return (
       <div>
         <Header>
-          <Img src={Logo} />
+          <Img className='animated zoomIn faster'src={Logo} />
         </Header>
         <Container>
           <Img src={Logo} alt="" />
