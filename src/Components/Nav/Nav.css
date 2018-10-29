@@ -37,9 +37,12 @@
     outline: 0;
     cursor: pointer;
     background-color: #222;
-    color: rgb(177, 38, 38);
+    color: rgb(209, 45, 45);
     padding-left: 35px;
     padding-right: 35px;
+}
+#activebutton:hover {
+  color: rgb(177, 38, 38);
 }
 
 #navbuttons:hover {
