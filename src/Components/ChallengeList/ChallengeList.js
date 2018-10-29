@@ -153,6 +153,9 @@ class ChallengeList extends Component {
               <p className="adsby">ads by klonewars</p>
               </div>
               </div>
+              <Link to={"/create"}>
+              <button className="createbutton">Create!</button>
+              </Link>
             </div>
           </div>
           <div className="listofchallenges">{challengesToDisplay}</div>
