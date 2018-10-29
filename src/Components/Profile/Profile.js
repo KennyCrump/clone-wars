@@ -19,11 +19,15 @@ class Profile extends Component {
       this.props.getUserData(response.data);
     });
 
+    
+  }
+
+  componentDidUpdate() {
     axios.get(`/api/profile/${this.props.match.params.id}`).then((response) => {
-        this.setState({
-          users: response.data
-        })
-    })
+      this.setState({
+        users: response.data
+      })
+  })
   }
 
 
@@ -123,5 +127,8 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { getUserData }
+  {getUserData}
+  
 )(Profile);
+
+

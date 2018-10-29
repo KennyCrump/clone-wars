@@ -1,0 +1,63 @@
+.creates {
+  display: flex;
+  justify-content: space-around;
+}
+
+.create-instructions {
+  width: 600px;
+  height: 700px;
+  padding: 10px;
+  background: #1d1d1b;
+}
+.bold {
+  font-size: 14px;
+  font-weight: 700;
+}
+.mirror-solution {
+  width: 600px;
+  text-align: left;
+}
+
+textarea {
+  font-size: 16px;
+  font-family: Montserrat;
+  background-color: #1d1d1b;
+  border: 0;
+  color: #c9c9c9;
+  padding: 10px;
+}
+.new-unit-test {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.test-text {
+  margin: 10px;
+}
+.namedifficulties {
+  display: flex;
+  align-items: center;
+}
+h3 {
+  color: #c9c9c9;
+}
+.difficulties {
+  width: 10vw;
+  height: 22px;
+  font-family: Montserrat;
+  background-color: rgb(27, 27, 27);
+  color: #c9c9c9;
+  border: 0;
+}
+.challengenames {
+  width: 20vw;
+  height: 25px;
+  font-family: Montserrat;
+  background-color: rgb(27, 27, 27);
+  color: #c9c9c9;
+  border: 0;
+  font-size: 0.9em;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
