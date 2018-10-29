@@ -62,7 +62,7 @@ class Nav extends Component {
         </div>
         </div>
         <Link to={"/profile"}>
-        {/* <button id="navbuttons">Profile</button> */}
+        
         </Link>
         </div>
       </div>
