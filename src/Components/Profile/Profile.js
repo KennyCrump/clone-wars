@@ -26,6 +26,7 @@ class Profile extends Component {
     })
   }
 
+
   render() {
     console.log(this.state.users)
     console.log(this.props.user)
@@ -70,6 +71,7 @@ class Profile extends Component {
     })
 
     const { username, picture, rank, score, email } = this.props.user;
+    
     return (
       <div>
         <Nav />
