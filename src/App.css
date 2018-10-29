@@ -1,6 +1,12 @@
 textarea:focus, input:focus, button:focus, select:focus{
   outline: none;
 }
+a {color: white}
+a { text-decoration: none; }
+a:visited { text-decoration: none; }
+a:hover { text-decoration: none; }
+a:focus { text-decoration: none; }
+a:hover, a:active { text-decoration: none; }
 
 body {
   background-color: #303133;

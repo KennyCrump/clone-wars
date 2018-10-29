@@ -76,7 +76,7 @@ class Dashboard extends Component {
               <td>{rank}</td>
               <td>
                 <button className="rank-dash">{user.rank}</button>
-                {user.username}
+                <Link to='/profile'>{user.username}</Link>
               </td>
               <td>{user.score}</td>
             </tr>
