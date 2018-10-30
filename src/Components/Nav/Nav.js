@@ -17,12 +17,14 @@ class Nav extends Component {
     axios.get('/api/userData').then((response) => {
       this.props.getUserData(response.data)
     })
+
+    
   }
 
 
   render() {
     console.log(this.props.user)
-    const {username, picture, rank, score} = this.props.user
+    const {username, picture, rank, score, user_id} = this.props.user
     return (
       <div className="outer">
       <div className="nav">
@@ -52,10 +54,14 @@ class Nav extends Component {
         <img className='user-picture' src={picture} alt=""/>
         <button className='rank'>{rank}</button>
         <span className='score' >{score}</span>
+
+
+
+        
         </div>
         <div className="dropdown-content">
         
-          <a href="/#/profile"><i className="fas fa-user fa-1x"></i> View Profile</a>
+          <Link to={`/profile/${user_id}`}><i className="fas fa-user fa-1x"></i> View Profile</Link>
           <hr/>
           <a href='http://localhost:4444/logout'><i className="fas fa-sign-out-alt"></i> Sign out</a>
           
