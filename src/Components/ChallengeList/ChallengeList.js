@@ -154,7 +154,7 @@ class ChallengeList extends Component {
               </div>
               </div>
               <Link to={"/create"}>
-              <button className="createbutton">Create!</button>
+              <button className="createbutton">Create a Challenge!</button>
               </Link>
             </div>
           </div>
