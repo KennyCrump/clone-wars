@@ -54,6 +54,10 @@ class Nav extends Component {
         <img className='user-picture' src={picture} alt=""/>
         <button className='rank'>{rank}</button>
         <span className='score' >{score}</span>
+
+
+
+        
         </div>
         <div className="dropdown-content">
         
