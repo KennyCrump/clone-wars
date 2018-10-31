@@ -19,12 +19,17 @@ class Profile extends Component {
       this.props.getUserData(response.data);
     });
 
-    axios.get(`/api/profile/${this.props.match.params.id}`).then((response) => {
-        this.setState({
-          users: response.data
-        })
-    })
+    
   }
+
+  componentDidUpdate() {
+    axios.get(`/api/profile/${this.props.match.params.id}`).then((response) => {
+      this.setState({
+        users: response.data
+      })
+  })
+  }
+
 
   render() {
     console.log(this.state.users)
@@ -45,8 +50,8 @@ class Profile extends Component {
               <div className="userinfo">
                 <h4 className="profiletext">{user.email}</h4>
 
-                <h4 className="profiletext">Level: {user.rank}</h4>
-                <h4 className="profiletext">{user.score}</h4>
+                <h4 className="user-rank">Level: {user.rank}</h4>
+                <h4 className="user-score">{user.score}</h4>
               </div>
               <div className="bio">
                 <p align="left">
@@ -68,44 +73,11 @@ class Profile extends Component {
           
         )
     })
-
-    const { username, picture, rank, score, email } = this.props.user;
+    
     return (
       <div>
         <Nav />
-        {/* {this.props.user.user_id ? <div className="Profile animated fadeIn faster">
-          <div className="userblock" id="profileblocks">
-            <div>
-              <div className="imgdiv">
-                <img className="profilepic" src={picture} alt="" />
-              </div>
-              <h2 className="profiletext">{username}</h2>
-            </div>
-            <div className="user-container">
-              <div className="userinfo">
-                <h4 className="profiletext">{email}</h4>
-
-                <h4 className="profiletext">Level: {rank}</h4>
-                <h4 className="profiletext">{score}</h4>
-              </div>
-              
-
-              <div className="bio">
-                <p align="left">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Dolorem eveniet ducimus voluptate porro repudiandae cupiditate
-                  doloremque excepturi incidunt reiciendis quibusdam debitis
-                  praesentium cum error, odio explicabo et, rem cumque
-                  inventore?
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="statsblock" id="profileblocks">
-            <h2 className="profiletext">Stats</h2>
-          </div>
-          <div />
-        </div> : {displayUser}} */}
+        
         
         {displayUser}
       </div>
@@ -121,5 +93,8 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { getUserData }
+  {getUserData}
+  
 )(Profile);
+
+
