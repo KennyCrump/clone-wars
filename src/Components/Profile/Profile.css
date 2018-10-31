@@ -26,6 +26,27 @@
     
 }
 
+.profile-input {
+    margin-right: 8px;
+    width: 200px;
+    height: 30px;
+  appearance: none;
+  background-color: #222;
+  border: 1px solid white;
+  line-height: 0;
+  font-size: 12px;
+  
+  display: block;
+  box-sizing: border-box;
+  padding: 5px 5px;
+  border-radius: 10px;
+  color: white;
+  font-weight: 100;
+  letter-spacing: 0.01em;
+  position: relative;
+  z-index: 1;
+}
+
 #profileblocks {
     display: flex;
     /* justify-content: center; */
@@ -62,6 +83,31 @@
  
 }
 
+
+
+.edit-profile {
+    cursor: pointer;
+    width: 95px;
+    height: 26px;
+    color: white;
+    background: transparent;
+    border: solid 1px #6795de;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: Oswald;
+    text-align: center;
+    float: right;
+    padding: 1px;
+    
+}
+
+
+
+.edit-profile:hover {
+    background: #303030;
+}
+
 .user-score {
     width: 80px;
     margin: 5px;
@@ -79,8 +125,9 @@
 .userinfo {
     display: flex;
     margin-top: 10px;
-    
+    align-items: center;
     width: 100%;
+    
 
 }
 
@@ -90,3 +137,5 @@
 
     /* border: 1px white solid; */
 }
+
+
