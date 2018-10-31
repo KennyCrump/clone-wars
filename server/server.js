@@ -38,6 +38,8 @@ app.use(
   app.get('/logout', ctrl.logout)
   app.get('/api/profile/:id', ctrl.profile)
 
+  app.post('/api/challenge/submit', ctrl.submitChallenge)
+
 
   
 

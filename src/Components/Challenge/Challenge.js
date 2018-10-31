@@ -94,8 +94,8 @@ class Challenge extends Component {
             else if(test.result === test.userAttempt){
                 return <p key={index} className='passed'>{`${test.test} passed`}</p>
             }else{
-                if(Array.isArray(test.userAttempt)){
-                    return <p key={index} className='failed'>{`${test.test} should return ${test.result} but returned  ${test.userAttempt}`}</p>
+                if(Array.isArray(test.userAttempt) && !Array.isArray(test.result)){
+                    return <p key={index} className='failed'>{`${test.test} should return ${test.result} but returned  ${JSON.stringify(test.userAttempt)}`}</p>
                 }
                 return <p key={index} className='failed'>{`${test.test} should return ${test.result} but returned ${test.userAttempt}`}</p>
             }
