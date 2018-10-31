@@ -153,10 +153,20 @@ class ChallengeList extends Component {
               <p className="adsby">ads by klonewars</p>
               </div>
               </div>
+              <div className="adsmall">
+              <img src="https://freegames.org/images/2048-solitaire-1200.png" alt="" className="adpic"/>
+              <div className="titleinfo">
+              <h5 className="adtitle">Tetris 2048</h5>
+              <p className="adsby">ads by klonewars</p>
+              </div>
+              </div>
               <Link to={"/create"}>
               <button className="createbutton">Create a Challenge!</button>
               </Link>
             </div>
+          </div>
+          <div className="filtersmall">
+          
           </div>
           <div className="listofchallenges">{challengesToDisplay}</div>
         </div>
