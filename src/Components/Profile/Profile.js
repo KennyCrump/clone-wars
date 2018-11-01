@@ -4,27 +4,27 @@ import "./Profile.css";
 import { connect } from "react-redux";
 import { getUserData } from "../../ducks/reducer";
 import axios from "axios";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
+
 class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
       users: [],
       edit: false,
-      email: '',
-      bio: ''
-
-
+      email: "",
+      description: "",
+      stat: true,
+      challenge: false
     };
+    this.handleSave = this.handleSave.bind(this);
   }
 
   componentDidMount() {
     axios.get("/api/userData").then(response => {
       this.props.getUserData(response.data);
     });
-  }
 
-  componentDidUpdate() {
     axios.get(`/api/profile/${this.props.match.params.id}`).then(response => {
       this.setState({
         users: response.data
@@ -32,26 +32,67 @@ class Profile extends Component {
     });
   }
 
+  // componentDidUpdate(prevProps, prevState) {
+  //   axios.get(`/api/profile/${this.props.match.params.id}`).then(response => {
+  //     if(prevProps.data !== this.props.data) {
+  //     this.setState({
+  //       users: response.data
+  //     });
+  //     }
+  //   });
+  // }
+
   handleEdit = () => {
     this.setState({
       edit: !this.state.edit
     });
   };
 
-  handleInput = (e) => {
+  handleInput = e => {
     this.setState({
       [e.target.name]: e.target.value
-    })
+    });
+  };
+
+  handleStatChange = () => {
+    this.setState({
+      stat: !this.state.stat,
+      challenge: false
+    });
+  };
+
+  handleChallengeChange = () => {
+    this.setState({
+      challenge: !this.state.challenge,
+      stat: false
+    });
+  };
+
+  async handleSave() {
+    await axios.put("/api/editUser", {
+      email: this.state.email,
+      description: this.state.description
+    });
+    this.setState({
+      edit: false
+    });
+    await axios
+      .get(`/api/profile/${this.props.match.params.id}`)
+      .then(response => {
+        this.setState({
+          users: response.data
+        });
+      });
   }
 
   render() {
     console.log(this.state.users);
     console.log(this.props.user);
+    console.log(this.state.description);
     let displayUser = this.state.users.map((user, i) => {
       return (
         <div>
           <div className="Profile animated fadeIn faster">
-          
             <div className="userblock" id="profileblocks">
               <div>
                 <div className="imgdiv">
@@ -59,41 +100,129 @@ class Profile extends Component {
                 </div>
                 <h2 className="profiletext">{user.username}</h2>
               </div>
-              <div className="user-container">
-                <div className="userinfo">
-                  <h4 className="profiletext">{user.email}</h4>
+              {!this.state.edit ? (
+                <div className="user-container">
+                  <div className="userinfo">
+                    <h4 className="profiletext">{user.email}</h4>
 
-                  <h4 className="user-rank">Level: {user.rank}</h4>
-                  <h4 className="user-score">{user.score}</h4>
-                  
-                  
-                  
-                  
-                  
+                    <h4 className="user-rank">Level: {user.rank}</h4>
+                    <h4 className="user-score">{user.score}</h4>
+                  </div>
+
+                  <div className="bio">
+                    <p align="left">{user.description}</p>
+                  </div>
+                  <div className="edit-button">
+                    {this.props.user.user_id === user.user_id ? (
+                      <h4 onClick={this.handleEdit} className="edit-profile">
+                        Edit Profile
+                      </h4>
+                    ) : null}
+                  </div>
                 </div>
-                
-                
-                <div className="bio">
-                  <p align="left">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Dolorem eveniet ducimus voluptate porro repudiandae
-                    cupiditate doloremquri incidunt reiciendis
-                    quibusdam debitis p oremquri incidunt reiciendis
-                    quibusdam debitis p oremquri incidunt reiciendis
-                    quibusdam debitis
-                  </p>
-                  {this.props.user.user_id === user.user_id ?  <Link to='/account'><h4 onClick={this.handleEdit} className="edit-profile">
-                  Edit Profile
-                </h4></Link> : null }
-                  
+              ) : (
+                <div className="user-container">
+                  <div className="userinfo">
+                    <input
+                      onChange={this.handleInput}
+                      defaultValue={user.email}
+                      name="email"
+                      className="profile-input animated fadeIn"
+                      placeholder="enter new email"
+                      type="text"
+                    />
+
+                    <h4 className="user-rank">Level: {user.rank}</h4>
+                    <h4 className="user-score">{user.score}</h4>
+                  </div>
+
+                  <div className="bio">
+                    <textarea
+                      onChange={this.handleInput}
+                      defaultValue={user.description}
+                      className="text-bio animated fadeInDown faster"
+                      name="description"
+                      id=""
+                      cols="20"
+                      rows="10"
+                    />
+                  </div>
+                  <div className="edit-button">
+                    <h4
+                      onClick={this.handleEdit}
+                      className="edit-profile animated "
+                    >
+                      Cancel
+                    </h4>
+                    {this.props.user.user_id === user.user_id ? (
+                      <h4
+                        onClick={this.handleSave}
+                        className="edit-profile animated"
+                      >
+                        Save Changes
+                      </h4>
+                    ) : null}
+                  </div>
                 </div>
-                      
-                
-              </div>
-             
+              )}
             </div>
-            <div className="statsblock" id="profileblocks">
-              <h2 className="profiletext">Stats</h2>
+
+            <div className="statsblock">
+              <div className="tab">
+                <h2
+                  onClick={this.handleStatChange}
+                  className={this.state.stat ? "stat" : "nostat"}
+                >
+                  Stats
+                </h2>
+                <h2
+                  onClick={this.handleChallengeChange}
+                  className={this.state.challenge ? "stat" : "nostat"}
+                >
+                  Completed Challenges
+                </h2>
+              </div>
+
+              <div className="statsbody">
+                {this.state.stat ? (
+                  <div className="progress-body">
+                    <h1>Progress</h1>
+                    <span>
+                      {" "}
+                      <span style={{ color: "#b0b0b0" }}>
+                        <strong>Rank:</strong>
+                      </span>{" "}
+                      &nbsp; {user.rank}{" "}
+                    </span>
+                    <br />
+                    <span>
+                      {" "}
+                      <span style={{ color: "#b0b0b0" }}>
+                        <strong>Score: </strong>
+                      </span>{" "}
+                      &nbsp; {user.score}{" "}
+                    </span>
+                    <br />
+                    <span>
+                      {" "}
+                      <span style={{ color: "#b0b0b0" }}>
+                        <strong>Leaderboard Position:</strong>
+                      </span>{" "}
+                      &nbsp; {user.score}{" "}
+                    </span>
+                    <br />
+                    <span>
+                      {" "}
+                      <span style={{ color: "#b0b0b0" }}>
+                        <strong>Completed Challenges:</strong>
+                      </span>{" "}
+                      &nbsp; {user.score}{" "}
+                    </span>
+                  </div>
+                ) : (
+                  <h1>challenges</h1>
+                )}
+              </div>
             </div>
             <div />
           </div>

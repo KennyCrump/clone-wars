@@ -37,6 +37,7 @@ app.use(
   app.get('/api/getUsers', ctrl.getUsers)
   app.get('/logout', ctrl.logout)
   app.get('/api/profile/:id', ctrl.profile)
+  app.put('/api/editUser', ctrl.editUser)
 
   app.post('/api/challenges/submit', ctrl.submitChallenge)
   app.post('/api/challenges/unittest', ctrl.submitTest)
