@@ -6,7 +6,6 @@ import { getUserData } from "../../ducks/reducer";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-
 class Profile extends Component {
   constructor(props) {
     super(props);
@@ -59,15 +58,15 @@ class Profile extends Component {
     this.setState({
       stat: !this.state.stat,
       challenge: false
-    })
-  }
+    });
+  };
 
   handleChallengeChange = () => {
     this.setState({
       challenge: !this.state.challenge,
       stat: false
-    })
-  }
+    });
+  };
 
   async handleSave() {
     await axios.put("/api/editUser", {
@@ -87,6 +86,7 @@ class Profile extends Component {
   }
 
   render() {
+    console.log(this.state.users);
     console.log(this.props.user);
     console.log(this.state.description);
     let displayUser = this.state.users.map((user, i) => {
@@ -148,11 +148,17 @@ class Profile extends Component {
                     />
                   </div>
                   <div className="edit-button">
-                    <h4 onClick={this.handleEdit} className="edit-profile animated ">
+                    <h4
+                      onClick={this.handleEdit}
+                      className="edit-profile animated "
+                    >
                       Cancel
                     </h4>
                     {this.props.user.user_id === user.user_id ? (
-                      <h4 onClick={this.handleSave} className="edit-profile animated">
+                      <h4
+                        onClick={this.handleSave}
+                        className="edit-profile animated"
+                      >
                         Save Changes
                       </h4>
                     ) : null}
@@ -160,21 +166,66 @@ class Profile extends Component {
                 </div>
               )}
             </div>
-            
-            <div className="statsblock">
-            <div className="tab">
 
-            <h2 onClick={this.handleStatChange}className={this.state.stat ? 'stat' : 'nostat'}>Stats</h2>
-            <h2 onClick={this.handleChallengeChange}className={this.state.challenge ? 'stat' : 'nostat'}>Completed Challenges</h2>
-            </div>
-            
-                 <div className="statsbody">
-                 {this.state.stat ? <h1>stats</h1> : <h1>challenges</h1>}
-                 </div> 
+            <div className="statsblock">
+              <div className="tab">
+                <h2
+                  onClick={this.handleStatChange}
+                  className={this.state.stat ? "stat" : "nostat"}
+                >
+                  Stats
+                </h2>
+                <h2
+                  onClick={this.handleChallengeChange}
+                  className={this.state.challenge ? "stat" : "nostat"}
+                >
+                  Completed Challenges
+                </h2>
+              </div>
+
+              <div className="statsbody">
+                {this.state.stat ? (
+                  <div className="progress-body">
+                    <h1>Progress</h1>
+                    <span>
+                      {" "}
+                      <span style={{ color: "#b0b0b0" }}>
+                        <strong>Rank:</strong>
+                      </span>{" "}
+                      &nbsp; {user.rank}{" "}
+                    </span>
+                    <br />
+                    <span>
+                      {" "}
+                      <span style={{ color: "#b0b0b0" }}>
+                        <strong>Score: </strong>
+                      </span>{" "}
+                      &nbsp; {user.score}{" "}
+                    </span>
+                    <br />
+                    <span>
+                      {" "}
+                      <span style={{ color: "#b0b0b0" }}>
+                        <strong>Leaderboard Position:</strong>
+                      </span>{" "}
+                      &nbsp; {user.score}{" "}
+                    </span>
+                    <br />
+                    <span>
+                      {" "}
+                      <span style={{ color: "#b0b0b0" }}>
+                        <strong>Completed Challenges:</strong>
+                      </span>{" "}
+                      &nbsp; {user.score}{" "}
+                    </span>
+                  </div>
+                ) : (
+                  <h1>challenges</h1>
+                )}
+              </div>
             </div>
             <div />
           </div>
-          
         </div>
       );
     });

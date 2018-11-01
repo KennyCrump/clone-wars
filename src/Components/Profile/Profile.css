@@ -172,9 +172,9 @@
 .tab {
     border-bottom: 1px solid rgb(161,160,161, .3);
     display: flex;
-    height: 20%;
+    height: 45px;
     align-items: center;
-    width: 100%;
+    width: 98%;
     margin: 0px 10px;
 }
 
@@ -213,6 +213,16 @@
     background-color: #222;
     margin: 30px;
     width: 75vw;
-    height: 30vh;
+    height: auto;
     flex-direction: column;
+    /* border: 1px white solid; */
+}
+
+.progress-body {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.progress-body h1 {
+    color: #6795de;
 }
