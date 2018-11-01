@@ -3,8 +3,7 @@
   top: 0;
   width: 100vw;
   z-index: 100;
-  
-  
+
   /* background: #222; */
 }
 
@@ -16,34 +15,37 @@
   color: #c9c9c9;
   align-items: center;
 }
+.navsmall {
+  display: none;
+}
 
 #navbuttons {
-    border: none;
-    font-family: Montserrat;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-weight: 400;
-    font-size: 1em;
-    outline: 0;
-    cursor: pointer;
-    background-color: #222;
-    color: #c9c9c9;
-    padding-left: 35px;
-    padding-right: 35px;
+  border: none;
+  font-family: Montserrat;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 1em;
+  outline: 0;
+  cursor: pointer;
+  background-color: #222;
+  color: #c9c9c9;
+  padding-left: 35px;
+  padding-right: 35px;
 }
 #activebutton {
   border: none;
-    font-family: Montserrat;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-weight: 400;
-    font-size: 1em;
-    outline: 0;
-    cursor: pointer;
-    background-color: #222;
-    color: rgb(209, 45, 45);
-    padding-left: 35px;
-    padding-right: 35px;
+  font-family: Montserrat;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 1em;
+  outline: 0;
+  cursor: pointer;
+  background-color: #222;
+  color: rgb(177, 38, 38);
+  padding-left: 35px;
+  padding-right: 35px;
 }
 #activebutton:hover {
   color: rgb(177, 38, 38);
@@ -119,26 +121,22 @@
   display: none;
   position: absolute;
   background-color: #222;
-  min-width: 160px;
+  min-width: 200px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   right: 1px;
-  
-  
 }
 
 .dropdown-content a {
-    
   float: none;
   color: white;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
   text-align: left;
-  
 }
 .dropdown-content a:hover {
-    color: #c4c4c4
+  color: #c4c4c4;
 }
 
 .dropdown:hover .dropdown-content {
@@ -148,17 +146,28 @@
 hr {
   width: 115px;
   border: 0;
-    height: 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid #363636;
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #363636;
 }
 
 .navline {
   margin: 0;
   border: 1px solid rgb(177, 38, 38);
   width: 100%;
-  opacity: .85;
+  opacity: 0.85;
 }
 
-
-
+@media (max-width: 1000px) {
+  .navsmall {
+    display: flex;
+    justify-content: space-between;
+    background-color: #222;
+    padding: 20px;
+    color: #c9c9c9;
+    align-items: center;
+  }
+  .nav {
+    display: none;
+  }
+}
