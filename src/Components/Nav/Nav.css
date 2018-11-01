@@ -47,6 +47,9 @@
   padding-left: 35px;
   padding-right: 35px;
 }
+#activebutton:hover {
+  color: rgb(177, 38, 38);
+}
 
 #navbuttons:hover {
   color: rgb(177, 38, 38);
