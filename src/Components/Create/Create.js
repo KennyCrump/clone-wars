@@ -110,27 +110,27 @@ class Create extends Component {
         }
         if (!test.userAttempt) {
           return (
-            <div>
+            <div className='unitTestList'>
+<button className='yellowButtons deleteButton' onClick={() => this.deleteTest(index)}>Delete</button>
               <p key={index} className="failed">{`${test.test} should return ${
                 test.result
               }`}</p>
-              <button onClick={() => this.deleteTest(index)}>Delete</button>
             </div>
           );
         } else if (test.result === test.userAttempt) {
           return (
             <div>
+              <button className='yellowButtons deleteButton' onClick={() => this.deleteTest(index)}>Delete</button>
               <p key={index} className="passed">{`${test.test} passed`}</p>
-              <button onClick={() => this.deleteTest(index)}>Delete</button>
             </div>
           );
         } else {
           return (
             <div>
+<button className='yellowButtons deleteButton' onClick={() => this.deleteTest(index)}>Delete</button>
               <p key={index} className="failed">{`${test.test} should return ${
                 test.result
               } but returned ${test.userAttempt}`}</p>
-              <button onClick={() => this.deleteTest(index)}>Delete</button>
             </div>
           );
         }
@@ -241,7 +241,7 @@ class Create extends Component {
                     placeholder="5"
                     onChange={e => this.setState({ newResult: e.target.value })}
                   />
-                  <button className="yellowButtons" id='test-text' onClick={this.addTest}>
+                  <button className="yellowButtons" id='test-button' onClick={this.addTest}>
                     Add Test
                   </button>
                 </div>
