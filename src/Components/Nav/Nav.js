@@ -63,8 +63,6 @@ class Nav extends Component {
         
           <Link to={`/profile/${user_id}`}><i className="fas fa-user fa-1x"></i> View Profile</Link>
           <hr/>
-          <a href='/#/account'><i class="fas fa-cogs"></i>   Account Settings</a>
-          <hr/>
           <a href='http://localhost:4444/logout'><i className="fas fa-sign-out-alt"></i> Sign out</a>
           
           

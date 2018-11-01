@@ -111,5 +111,14 @@ module.exports = {
     db.get_profile([id]).then((response) => {
       res.status(200).send(response)
     }).catch(err => console.log(err))
+  },
+  editUser: (req,res) => {
+    const db = req.app.get('db')
+    const {email, description} = req.body
+    const {user_id} = req.session.user
+    db.update_user([email, description, user_id]).then((response) => {
+      res.status(200).send(response)
+    }).catch(err => console.log(err))
+
   }
 };
