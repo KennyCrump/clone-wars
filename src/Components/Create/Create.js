@@ -85,14 +85,16 @@ class Create extends Component {
   updateSolution = newCode => {
     this.setState({ solution: newCode, completed: false });
   };
-  submitChallenge(){
+  submitChallenge = () => {
       let {instructions, startingCode, difficulty, name, solution, unitTests} = this.state;
-      axios.post('/api/challenge/submit', {instructions, starting_code: startingCode, difficulty, name})
+      axios.post('/api/challenges/submit', {instructions, starting_code: startingCode, difficulty, name})
       .then(res=>{
+        console.log('res 2', res)
+          const {challenge_id} = res.data[0]
           for (let i = 1; i < unitTests.length; i++) {
-              axios.post('/api/challenge/unittest', {test: unitTests[i].test, result: unitTests[i].result, challenge_id: +res})
+              axios.post('/api/challenges/unittest', {test: unitTests[i].test, result: unitTests[i].result, challenge_id: +challenge_id})
           }
-          axios.post('/api/challenge/solution', {challenge_id: +res, solution: solution, completed: true})
+          axios.post('/api/challenges/solution', {challenge_id: +challenge_id, solution: solution, completed: true})
       })
   }
 
@@ -108,27 +110,27 @@ class Create extends Component {
         }
         if (!test.userAttempt) {
           return (
-            <div>
+            <div className='unitTestList'>
+<button className='yellowButtons deleteButton' onClick={() => this.deleteTest(index)}>Delete</button>
               <p key={index} className="failed">{`${test.test} should return ${
                 test.result
               }`}</p>
-              <button onClick={() => this.deleteTest(index)}>Delete</button>
             </div>
           );
         } else if (test.result === test.userAttempt) {
           return (
             <div>
+              <button className='yellowButtons deleteButton' onClick={() => this.deleteTest(index)}>Delete</button>
               <p key={index} className="passed">{`${test.test} passed`}</p>
-              <button onClick={() => this.deleteTest(index)}>Delete</button>
             </div>
           );
         } else {
           return (
             <div>
+<button className='yellowButtons deleteButton' onClick={() => this.deleteTest(index)}>Delete</button>
               <p key={index} className="failed">{`${test.test} should return ${
                 test.result
               } but returned ${test.userAttempt}`}</p>
-              <button onClick={() => this.deleteTest(index)}>Delete</button>
             </div>
           );
         }
@@ -141,6 +143,7 @@ class Create extends Component {
       <div className="outercreate">
         <Nav />
         <div className="creates">
+
           <div className="create-instructions">
             <h1>Steps to Creating a Challenge</h1>
             <p className="textColor instructionText">
@@ -177,25 +180,26 @@ class Create extends Component {
               ensure unit tests and code are working as intended before allowing
               other users to try out your Challenge.
             </p>
-          </div>
+        </div>
           <div className="mirror-solution">
             <div>
                 <div className="namedifficulties">
-                <h3>Challenge Name: </h3>
-                <input type="text" className="challengenames" value={this.state.name} onChange={e=>this.setState({name: e.target.value})}/>
-                <h3>Difficulty: </h3>
-                <select name="difficulty" className="difficulties" id="" onChange={e=>this.setState({difficulty: e.target.value})} value={this.state.difficulty}>
-                <option value="1">Level: 1</option>
-                <option value="2">Level: 2</option>
-                <option value="3">Level: 3</option>
-                <option value="4">Level: 4</option>
-                <option value="5">Level: 5</option>
-                <option value="6">Level: 6</option>
-                <option value="7">Level: 7</option>
-                <option value="8">Level: 8</option>
-                <option value="9">Level: 9</option>
-                <option value="10">Level: 10</option>
-                </select>
+                <h3 className='createNameTitle'>Challenge Name: </h3>
+                <input type="text" className="challengenames" placeholder=' Challenge Name' value={this.state.name} onChange={e=>this.setState({name: e.target.value})}/>
+                
+                  <h3 className='createNameTitle'>Difficulty: </h3>
+                  <select name="difficulty" className="difficulties" id="" onChange={e=>this.setState({difficulty: e.target.value})} value={this.state.difficulty}>
+                  <option value="1">Level: 1</option>
+                  <option value="2">Level: 2</option>
+                  <option value="3">Level: 3</option>
+                  <option value="4">Level: 4</option>
+                  <option value="5">Level: 5</option>
+                  <option value="6">Level: 6</option>
+                  <option value="7">Level: 7</option>
+                  <option value="8">Level: 8</option>
+                  <option value="9">Level: 9</option>
+                  <option value="10">Level: 10</option>
+                  </select>
                 </div>
               <h1>Instructions</h1>
               <textarea
@@ -237,7 +241,7 @@ class Create extends Component {
                     placeholder="5"
                     onChange={e => this.setState({ newResult: e.target.value })}
                   />
-                  <button className="test-text" onClick={this.addTest}>
+                  <button className="yellowButtons" id='test-button' onClick={this.addTest}>
                     Add Test
                   </button>
                 </div>
@@ -252,10 +256,10 @@ class Create extends Component {
                   options={options}
                   mode="javascript"
                 />
-          <button className="run challengeButtons" onClick={this.runCode}>
+          <button className="run yellowButtons" onClick={this.runCode}>
             Run
           </button>
-        <button className="run challengeButtons" onClick={this.submitChallenge}>Submit!</button>
+        <button className="run yellowButtons" onClick={this.submitChallenge}>Submit!</button>
               </div>
             </div>
           </div>

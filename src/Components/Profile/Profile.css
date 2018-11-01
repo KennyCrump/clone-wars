@@ -34,6 +34,7 @@
     margin-right: 100px;
     overflow: scroll;
     margin-top: 12px;
+    resize: none;
 }
 
 .profile-input {
@@ -111,6 +112,7 @@
     text-align: center;
     float: right;
     padding: 1px;
+    margin-left: 15px;
     
 }
 
@@ -155,6 +157,7 @@
     
 }
 
+
 .bio {
     
     height: 45%;
@@ -166,5 +169,50 @@
     /* border: 1px white solid; */
 }
 
+.tab {
+    border-bottom: 1px solid rgb(161,160,161, .3);
+    display: flex;
+    height: 20%;
+    align-items: center;
+    width: 100%;
+    margin: 0px 10px;
+}
 
+.stat {
+    
+    margin: 5px 20px;
+    height: 26px;
+    color: white;
+    background: transparent;
+    border-bottom: solid 1px #6795de;
+    /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+    cursor: pointer;
+    font-size: 18px;
+    font-family: Montserrat;
+    text-align: center;
+}
 
+.nostat:hover {
+    color: lightgray;
+}
+
+.nostat {
+    margin: 5px 20px;
+    height: 26px;
+    color: white;
+    background: transparent;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: Montserrat;
+    text-align: center;
+}
+
+.statsblock {
+    
+    display: flex;
+    background-color: #222;
+    margin: 30px;
+    width: 75vw;
+    height: 30vh;
+    flex-direction: column;
+}

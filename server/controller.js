@@ -50,7 +50,7 @@ module.exports = {
     const db = req.app.get("db");
     db.get_challenges()
     .then(response => {
-      console.log(response);
+      // console.log(response);
       res.status(200).send(response);
     })
     .catch(err => {
@@ -63,7 +63,7 @@ module.exports = {
     const {id} = req.params;
     db.one_challenge({id})
     .then(response => {
-      console.log(response);
+      // console.log(response);
       res.status(200).send(response);
     })
     .catch(err => {
@@ -76,8 +76,8 @@ module.exports = {
     const {difficulty} = req.body;
     db.challenge_by_diff({difficulty})
     .then(response => {
-      console.log(response);
-      console.log(difficulty);
+      // console.log(response);
+      // console.log(difficulty);
       res.status(200).send(response);
     })
     .catch(err => {
@@ -89,7 +89,7 @@ module.exports = {
     const db = req.app.get("db");
     const {id: challenge_id} = req.params;
     const {solution, completed} = req.body
-    const {user_id} = req.sessions.user
+    const {user_id} = req.session.user
     db.create_user_solution({user_id, challenge_id, solution, completed})
     res.status(200).send('solution added')
   },
@@ -119,6 +119,30 @@ module.exports = {
     db.update_user([email, description, user_id]).then((response) => {
       res.status(200).send(response)
     }).catch(err => console.log(err))
+  },
 
+  submitChallenge: (req, res) => {
+    const db = req.app.get('db')
+    const {instructions, starting_code, solution, difficulty, name} = req.body
+    const {user_id} = req.session.user
+    db.submit_challenge({name, instructions, starting_code, difficulty: +difficulty, solution, creator: +user_id}).then(response => {
+      res.status(200).send(response)
+      console.log('challenge added, ID: ', response)
+    })
+  },
+  submitTest: (req, res) => {
+    const db = req.app.get('db')
+    const {test, result, challenge_id} = req.body
+    db.submit_test({test, result, challenge_id: +challenge_id}).then(response => {
+      res.status(200).send(console.log('unit test added'))
+    })
+  },
+  submitUserSolution: (req, res) => {
+    const db = req.app.get('db')
+    let {challenge_id, solution, completed, creator} = req.body
+    let {user_id} = req.session.user
+    db.submit_solution({challenge_id: + challenge_id, solution, completed, user_id: +user_id}).then(response => {
+      res.status(200).send(console.log('solution added'))
+    })
   }
 };
