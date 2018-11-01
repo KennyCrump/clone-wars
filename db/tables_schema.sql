@@ -10,7 +10,8 @@ CREATE TABLE users (
   picture TEXT,
   rank VARCHAR(10),
   score INTEGER,
-  auth_id TEXT
+  auth_id TEXT,
+  description VARCHAR(500)
 );
 
 CREATE TABLE challenges (
@@ -18,7 +19,8 @@ CREATE TABLE challenges (
     name VARCHAR(50),
     instructions VARCHAR(10000),
     starting_code VARCHAR(1000),
-    difficulty VARCHAR(10)
+    difficulty VARCHAR(10),
+    creator  INTEGER REFERENCES users(user_id)
 );
 
 CREATE TABLE unit_tests (

@@ -12,6 +12,7 @@ class Challenge extends Component {
     constructor(props) {
         super(props);
         this.state = { 
+            instructions: '',
             error: '',
             userCode: '',
             result: '',
@@ -51,33 +52,34 @@ class Challenge extends Component {
 
     runCode = () =>{
         let passedAllTests = true
-        let tests = [...this.state.unitTests]
+        // let tests = [...this.state.unitTests]
+        let tests = this.state.unitTests.slice('')
         let code = this.state.userCode
         let hasErrors = false
-        for(let i =0; i < tests.length; i++){
-            let unitTest = code + '\n ' + tests[i].test
+        for(let testIndexVariable = 0; testIndexVariable < tests.length; testIndexVariable++){ //Used 'testIndexVariable instead of i to avoid errors if the user includes a variable named i in their code, which was breaking the component
+            let unitTest = code + '\n ' + tests[testIndexVariable].test //Adds each individual unit test onto user code, so unit test can be ran with their code.
 
             try{
-                let answer = eval(unitTest)
-                tests[i].userAttempt = answer
-            }catch(error){
+                let answer = eval(unitTest)             //Evaluates their code with the unit tests
+                tests[testIndexVariable].userAttempt = answer
+            }catch(error){                              //Console log's error and alerts user to check console.
                 console.error(error)
                 hasErrors = true
                 this.setState({error: 'There was an error in compiling your code, check your developer console for details.'})
-                tests[i].userAttempt = 'an Error'
+                tests[testIndexVariable].userAttempt = 'an Error'       //This will add onto the unit test object even though setState doesn't get ran since it is pass by reference 
             }
 
-            if(tests[i].userAttempt != tests[i].result){
+            if(tests[testIndexVariable].userAttempt != tests[testIndexVariable].result){ //Determines if user code is valid solution
                 passedAllTests = false
             }
         }
-        if(!hasErrors){
+        if(!hasErrors){                                  //Sets State only if the code compiled successfully
             this.setState({ error: '', unitTests: tests, completed: passedAllTests, solution: this.state.userCode})
         }
     }
     
     render() { 
-    
+        console.log(this.state.unitTests)
         const options = {
             lineNumbers: true,
             theme: 'icecoder'
@@ -92,6 +94,9 @@ class Challenge extends Component {
             else if(test.result === test.userAttempt){
                 return <p key={index} className='passed'>{`${test.test} passed`}</p>
             }else{
+                if(Array.isArray(test.userAttempt) && !Array.isArray(test.result)){
+                    return <p key={index} className='failed'>{`${test.test} should return ${test.result} but returned  ${JSON.stringify(test.userAttempt)}`}</p>
+                }
                 return <p key={index} className='failed'>{`${test.test} should return ${test.result} but returned ${test.userAttempt}`}</p>
             }
         })

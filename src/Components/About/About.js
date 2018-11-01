@@ -13,7 +13,7 @@ class About extends Component {
             <div>
                 <Nav />
                 <div className="aboutsite">
-                <h1 className="techtitle">Tech Used</h1>
+                <h1 className="abouttitle">Tech Used</h1>
                 <hr className="techr"/>
                 <div className="techused">
                 <div className="thing1">
@@ -50,18 +50,24 @@ class About extends Component {
                 </div>
                 </div>
                 </div>
+                <div className="uswrapper">
+                <h1 className="abouttitle">Creators</h1>
+                <hr className="techr"/> 
                 <div className="us">
                     <div className="aboutus">
                         <h1>Kenny Crump</h1>
+                        <p>Lorem Ipsum is overused and I refuse to use it.</p>
                     </div>
                     <div className="aboutus">
                         <h1>Kaleb Manley</h1>
+                        <p>Lorem Ipsum is overused and I refuse to use it.</p>
                     </div>
                     <div className="aboutus"> 
                         <img className="usimg" src={kenimg} alt=""/>
                         <h1>Kenneth Benioni</h1>
                         <p>Lorem Ipsum is overused and I refuse to use it.</p>
                     </div>
+                </div>
                 </div>
             </div>
         );

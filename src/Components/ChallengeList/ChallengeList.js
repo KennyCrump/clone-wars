@@ -23,11 +23,11 @@ class ChallengeList extends Component {
       });
     });
   }
-  handleInput(e){
+  handleInput(e) {
     this.setState({ searchInput: e });
   }
-  handleProgress(e){
-      this.setState({progress: e})
+  handleProgress(e) {
+    this.setState({ progress: e });
   }
 
   handleDifficulty(e) {
@@ -64,10 +64,12 @@ class ChallengeList extends Component {
     }
     let challengesToDisplay = newChallenges.map((e, i) => {
       return (
-        <div key={i}>
+        <div key={i} className="wrapchallenge">
           <div className="list">
             <div className="namedifficulty">
-              <h1 className="challengename" id="challengeinfo">{e.name}</h1>
+              <h1 className="challengename" id="challengeinfo">
+                {e.name}
+              </h1>
               <h4 id="challengeinfo">Difficulty</h4>
               <hr />
               <h4>Level: {e.difficulty}</h4>
@@ -131,8 +133,8 @@ class ChallengeList extends Component {
               </div>
               <hr />
               <div className="progress">
-                  <h4>Progress:</h4>
-                  <select
+                <h4>Progress:</h4>
+                <select
                   className="select"
                   onChange={e => {
                     this.handleProgress(e.target.value);
@@ -144,29 +146,83 @@ class ChallengeList extends Component {
                   <option value="complete">Completed Challenges</option>
                 </select>
               </div>
-              <hr/>
+              <hr />
               <div className="ad">
-              <img src="https://freegames.org/images/2048-solitaire-1200.png" alt="" className="adpic"/>
-              <div className="titleinfo">
-              <h5 className="adtitle">Tetris 2048</h5>
-              <p className="adinfo">It's like 2048 and Tetris had a baby. Try it dude!</p>
-              <p className="adsby">ads by klonewars</p>
-              </div>
+                <img
+                  src="https://freegames.org/images/2048-solitaire-1200.png"
+                  alt=""
+                  className="adpic"
+                />
+                <div className="titleinfo">
+                  <h5 className="adtitle">Tetris 2048</h5>
+                  <p className="adinfo">
+                    It's like 2048 and Tetris had a baby. Try it dude!
+                  </p>
+                  <p className="adsby">ads by klonewars</p>
+                </div>
               </div>
               <div className="adsmall">
-              <img src="https://freegames.org/images/2048-solitaire-1200.png" alt="" className="adpic"/>
-              <div className="titleinfo">
-              <h5 className="adtitle">Tetris 2048</h5>
-              <p className="adsby">ads by klonewars</p>
-              </div>
+                <img
+                  src="https://freegames.org/images/2048-solitaire-1200.png"
+                  alt=""
+                  className="adpic"
+                />
+                <div className="titleinfo">
+                  <h5 className="adtitle">Tetris 2048</h5>
+                  <p className="adsby">ads by klonewars</p>
+                </div>
               </div>
               <Link to={"/create"}>
-              <button className="createbutton">Create a Challenge!</button>
+                <button className="createbutton">Create a Challenge!</button>
               </Link>
             </div>
           </div>
           <div className="filtersmall">
-          
+          <input
+                type="text"
+                placeholder="Search"
+                className="searchbar"
+                onChange={e => {
+                  this.handleInput(e.target.value);
+                }}
+              />
+              <div className="diffprog">
+          <div className="difficulty">
+                <h4>Difficulty:</h4>
+                <select
+                  className="select"
+                  onChange={e => {
+                    this.handleDifficulty(e.target.value);
+                  }}
+                >
+                  <option value="select">All Difficulties</option>
+                  <option value="1">Level: 1</option>
+                  <option value="2">Level: 2</option>
+                  <option value="3">Level: 3</option>
+                  <option value="4">Level: 4</option>
+                  <option value="5">Level: 5</option>
+                  <option value="6">Level: 6</option>
+                  <option value="7">Level: 7</option>
+                  <option value="8">Level: 8</option>
+                  <option value="9">Level: 9</option>
+                  <option value="10">Level: 10</option>
+                </select>
+              </div>
+              <div className="progress">
+                <h4>Progress:</h4>
+                <select
+                  className="select"
+                  onChange={e => {
+                    this.handleProgress(e.target.value);
+                  }}
+                >
+                  <option value="all">All</option>
+                  <option value="not-trained">New Challenges</option>
+                  <option value="incomplete">Incomplete Challenges</option>
+                  <option value="complete">Completed Challenges</option>
+                </select>
+              </div>
+              </div>
           </div>
           <div className="listofchallenges">{challengesToDisplay}</div>
         </div>
