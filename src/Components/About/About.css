@@ -21,11 +21,22 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding-top: 20px;
-}
-.aboutus {
+    margin: 20px 30px 0px 30px;
     background-color: #222;
     box-shadow: 2px 3px 3px rgb(16, 16, 16);
+}
+.usimg {
+    height: 25vh;
+    width: auto;
+}
+
+.aboutus {
+    padding: 10px;
+    width: 20vw;
+    /* background-color: rgb(117, 117, 117); */
+    /* box-shadow: 2px 3px 3px rgb(16, 16, 16); */
+    border: 3px solid rgb(177, 38, 38);
+    margin: 10px;
 }
 .thing1 {
     display: flex;

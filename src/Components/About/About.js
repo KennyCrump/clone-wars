@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './About.css';
 import Nav from '../Nav/Nav';
+import kenimg from './DSC_0079.jpg';
 
 class About extends Component {
     constructor(props) {
@@ -57,7 +58,9 @@ class About extends Component {
                         <h1>Kaleb Manley</h1>
                     </div>
                     <div className="aboutus"> 
+                        <img className="usimg" src={kenimg} alt=""/>
                         <h1>Kenneth Benioni</h1>
+                        <p>Lorem Ipsum is overused and I refuse to use it.</p>
                     </div>
                 </div>
             </div>
