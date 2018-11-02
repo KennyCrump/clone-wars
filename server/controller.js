@@ -130,7 +130,7 @@ module.exports = {
   },
   submitUserSolution: (req, res) => {
     const db = req.app.get('db')
-    let {challenge_id, solution, completed, creator} = req.body
+    let {challenge_id, solution, completed} = req.body
     let {user_id} = req.session.user
     db.submit_solution({challenge_id: + challenge_id, solution, completed, user_id: +user_id}).then(response => {
       res.status(200).send(console.log('solution added'))
