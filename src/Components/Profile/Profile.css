@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
 }
 .imgdiv {
     overflow: hidden;
@@ -12,6 +13,7 @@
     width: 100px;
     padding: 20px;
     position: relative;
+    /* border: 1px white solid; */
 }
 
 /* .userblock {
@@ -24,6 +26,15 @@
     align-items: center;
     
     
+}
+
+.text-bio {
+    height: 55%;
+    width: 90%;
+    margin-right: 100px;
+    overflow: scroll;
+    margin-top: 12px;
+    resize: none;
 }
 
 .profile-input {
@@ -53,7 +64,8 @@
     background-color: #222;
     margin: 30px;
     width: 75vw;
-    
+    height: 30vh;
+    /* border: 1px white solid; */
 }
 
 .profiletext {
@@ -65,6 +77,7 @@
     font-weight: 400;
     font-size: 0.9em;
     padding: 10px;
+    /* border: 1px white solid; */
     /* border: 1px white solid; */
 }
 
@@ -99,7 +112,18 @@
     text-align: center;
     float: right;
     padding: 1px;
+    margin-left: 15px;
     
+}
+
+.edit-button {
+    /* border: 1px white solid; */
+    height: 40px;
+    margin: 0px 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 60vw;
 }
 
 
@@ -124,18 +148,81 @@
 
 .userinfo {
     display: flex;
-    margin-top: 10px;
+    margin-top: 15px;
     align-items: center;
-    width: 100%;
+    text-overflow: ellipsis;
+    overflow: scroll;
+    /* border: 1px white solid; */
     
-
+    
 }
 
+
 .bio {
-    width: 95%;
-    margin: 10px;
+    
+    height: 45%;
+    /* max-width: 50vw; */
+    margin: 0px 10px;
+    width: 90%;
+    overflow: scroll;
 
     /* border: 1px white solid; */
 }
 
+.tab {
+    border-bottom: 1px solid rgb(161,160,161, .3);
+    display: flex;
+    height: 45px;
+    align-items: center;
+    width: 98%;
+    margin: 0px 10px;
+}
 
+.stat {
+    
+    margin: 5px 20px;
+    height: 26px;
+    color: white;
+    background: transparent;
+    border-bottom: solid 1px #6795de;
+    /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+    cursor: pointer;
+    font-size: 18px;
+    font-family: Montserrat;
+    text-align: center;
+}
+
+.nostat:hover {
+    color: lightgray;
+}
+
+.nostat {
+    margin: 5px 20px;
+    height: 26px;
+    color: white;
+    background: transparent;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: Montserrat;
+    text-align: center;
+}
+
+.statsblock {
+    
+    display: flex;
+    background-color: #222;
+    margin: 30px;
+    width: 75vw;
+    height: auto;
+    flex-direction: column;
+    /* border: 1px white solid; */
+}
+
+.progress-body {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.progress-body h1 {
+    color: #6795de;
+}

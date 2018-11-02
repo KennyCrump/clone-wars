@@ -74,6 +74,23 @@ class Nav extends Component {
             <Link to={"/profile"} />
           </div>
         </div>
+<<<<<<< HEAD
+=======
+        <div className="dropdown-content">
+        
+          <Link to={`/profile/${user_id}`}><i className="fas fa-user fa-1x"></i> View Profile</Link>
+          <hr/>
+          <a href='http://localhost:4444/logout'><i className="fas fa-sign-out-alt sign-out"></i> Sign out</a>
+          
+          
+        </div>
+        </div>
+        <Link to={"/profile"}>
+        
+        </Link>
+        </div>
+      </div>
+>>>>>>> master
         <div className="navsmall">
           <div className="left-nav">
             <a href="/#/dashboard">

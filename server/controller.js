@@ -112,6 +112,18 @@ module.exports = {
       res.status(200).send(response)
     }).catch(err => console.log(err))
   },
+<<<<<<< HEAD
+=======
+  editUser: (req,res) => {
+    const db = req.app.get('db')
+    const {email, description} = req.body
+    const {user_id} = req.session.user
+    db.update_user([email, description, user_id]).then((response) => {
+      res.status(200).send(response)
+    }).catch(err => console.log(err))
+  },
+
+>>>>>>> master
   submitChallenge: (req, res) => {
     const db = req.app.get('db')
     const {instructions, starting_code, solution, difficulty, name} = req.body
