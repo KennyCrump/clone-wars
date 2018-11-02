@@ -45,8 +45,9 @@ class Challenge extends Component {
 
     submitSolution = () => {
         let {solution, completed} = this.state
-        axios.post(`/api/challenge/${this.props.match.params.id}`, {solution, completed}).then(res => {
-
+        let challenge_id = this.props.match.params.id
+        axios.post(`/api/challenge/solution`, {solution, completed, challenge_id}).then(res => {
+            alert('Submitted Successfully')
         })
     }
 
@@ -121,7 +122,7 @@ class Challenge extends Component {
                             }
                         </div>
                         <button className="run challengeButtons" onClick={this.runCode}>Run</button>
-                        {this.state.completed ? <button className=" submit challengeButtons">Submit Completed Challenge</button>
+                        {this.state.completed ? <button onClick={this.submitSolution} className=" submit challengeButtons">Submit Completed Challenge</button>
                         :
                         <button className=" submit challengeButtons" disabled>Pass All Tests to Submit</button>}
                         <div className='SolutionWrapper'>
