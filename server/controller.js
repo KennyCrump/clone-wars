@@ -144,5 +144,13 @@ module.exports = {
     db.submit_solution({challenge_id: + challenge_id, solution, completed, user_id: +user_id}).then(response => {
       res.status(200).send(console.log('solution added'))
     })
+  },
+
+  getUsersCompletedChallenges: (req, res) => {
+    const db = req.app.get('db')
+    const {id} = req.params
+    db.users_challenges([id]).then((response) => {
+      res.status(200).send(response)
+    }).catch(err => console.log(err))
   }
 };

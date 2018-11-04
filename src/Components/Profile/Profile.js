@@ -10,7 +10,9 @@ class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      challenges: [],
       users: [],
+      user: [],
       edit: false,
       email: "",
       description: "",
@@ -25,11 +27,26 @@ class Profile extends Component {
       this.props.getUserData(response.data);
     });
 
+    axios.get(`/api/usersChallenges/${this.props.match.params.id}`).then((response) => {
+      this.setState({
+        challenges: response.data
+      })
+    })
+
+    
+                            
+
     axios.get(`/api/profile/${this.props.match.params.id}`).then(response => {
       this.setState({
-        users: response.data
+        user: response.data
       });
     });
+
+    axios.get('/api/getUsers').then((response) => {
+      this.setState({
+        users: response.data
+      })
+    })
   }
 
   // componentDidUpdate(prevProps, prevState) {
@@ -62,11 +79,19 @@ class Profile extends Component {
   };
 
   handleChallengeChange = () => {
+    axios.get(`/api/usersChallenges/${this.props.match.params.id}`).then((response) => {
+      this.setState({
+        challenges: response.data
+      })
+    })
+                            
+
     this.setState({
       challenge: !this.state.challenge,
       stat: false
     });
   };
+
 
   async handleSave() {
     await axios.put("/api/editUser", {
@@ -85,11 +110,57 @@ class Profile extends Component {
       });
   }
 
+  sortUsers = () => {
+    const {users} = this.state
+    const {user}= this.state
+    for (let i = 0; i < users.length; i++) {
+      if(users[i].user_id === this.state.user[0].user_id) {
+        
+        return users.indexOf(users[i + 1])
+      } 
+      }
+    }
+
+    challengeCount = () => {
+      return this.state.challenges.length;
+    }
+
+
   render() {
-    console.log(this.state.users);
-    console.log(this.props.user);
-    console.log(this.state.description);
-    let displayUser = this.state.users.map((user, i) => {
+   
+    let displayChallenges = this.state.challenges.map((e, i) => {
+      return (
+        <div key={i}>
+          <div className="completedChallenge animated fadeIn">
+            <div className="nameddifficulty2 ">
+              <h1 className="challengename" id="challengeinfo">{e.name}</h1>
+              <h4 id="challengeinfo">Difficulty</h4>
+              <hr />
+              <h4>Level: {e.difficulty}</h4>
+              <Link to={`/challenge/${e.challenge_id}`}>
+                <button className="attempt">Code Me Again!</button>
+              </Link>
+            </div>
+            <div className="instruction">
+              <p>{e.instructions}</p>
+            </div>
+          </div>
+          <div className="list-small">
+            <div className="namedifficulty">
+              <h1 id="challengeinfo">{e.name}</h1>
+              <h4 id="challengeinfo">Difficulty</h4>
+              <hr />
+              <h4>Level: {e.difficulty}</h4>
+              <Link to={`/challenge/${e.challenge_id}`}>
+                <button className="attempt">Code Me Again!</button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      )
+    })
+    console.log(this.state.challenges)
+    let displayUser = this.state.user.map((user, i) => {
       return (
         <div>
           <div className="Profile animated fadeIn faster">
@@ -175,12 +246,14 @@ class Profile extends Component {
                 >
                   Stats
                 </h2>
+                
                 <h2
                   onClick={this.handleChallengeChange}
                   className={this.state.challenge ? "stat" : "nostat"}
                 >
                   Completed Challenges
                 </h2>
+                
               </div>
 
               <div className="statsbody">
@@ -206,9 +279,9 @@ class Profile extends Component {
                     <span>
                       {" "}
                       <span style={{ color: "#b0b0b0" }}>
-                        <strong>Leaderboard Position:</strong>
+                        <strong>Leaderboard Position: </strong>
                       </span>{" "}
-                      &nbsp; {user.score}{" "}
+                      &nbsp; #{this.sortUsers(this.state.users)}{" "}
                     </span>
                     <br />
                     <span>
@@ -216,12 +289,22 @@ class Profile extends Component {
                       <span style={{ color: "#b0b0b0" }}>
                         <strong>Completed Challenges:</strong>
                       </span>{" "}
-                      &nbsp; {user.score}{" "}
+                      &nbsp; {this.challengeCount()}{" "}
                     </span>
                   </div>
                 ) : (
-                  <h1>challenges</h1>
+
+
+                    <div className='challenge-body'>
+                      <h1>Completed Challenges</h1>
+
+                      {displayChallenges}
+                    </div>
+                 
+
+
                 )}
+                
               </div>
             </div>
             <div />
@@ -235,6 +318,7 @@ class Profile extends Component {
         <Nav />
 
         {displayUser}
+        
       </div>
     );
   }
