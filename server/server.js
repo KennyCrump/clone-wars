@@ -33,12 +33,15 @@ app.use(
   app.get('/api/allchallenges', ctrl.getChallenges)
   app.get('/api/challenge/:id', ctrl.challenge)
   app.get('/api/difficulty', ctrl.byDifficulty)
-  app.post('/api/challenge/:id', ctrl.submitUserSolution)
   app.get('/api/getUsers', ctrl.getUsers)
   app.get('/logout', ctrl.logout)
   app.get('/api/profile/:id', ctrl.profile)
-  app.put('/api/editUser', ctrl.editUser)
+  app.get('/api/usersChallenges/:id', ctrl.getUsersCompletedChallenges)
 
+
+  app.put('/api/editUser', ctrl.editUser)
+  
+  app.post('/api/challenge/:id', ctrl.submitUserSolution)
   app.post('/api/challenges/submit', ctrl.submitChallenge)
   app.post('/api/challenges/unittest', ctrl.submitTest)
   app.post('/api/challenges/solution', ctrl.submitUserSolution)
