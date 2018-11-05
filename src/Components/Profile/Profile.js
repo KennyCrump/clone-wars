@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { getUserData } from "../../ducks/reducer";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import LoadingSpinner from '../Loading/LoadingSpinner'
 
 class Profile extends Component {
   constructor(props) {
@@ -14,39 +15,46 @@ class Profile extends Component {
       users: [],
       user: [],
       edit: false,
-      email: "",
-      description: "",
+      email: '',
+      description: '',
       stat: true,
-      challenge: false
+      challenge: false,
+      loading: false
     };
     this.handleSave = this.handleSave.bind(this);
   }
 
   componentDidMount() {
-    axios.get("/api/userData").then(response => {
-      this.props.getUserData(response.data);
-    });
 
-    axios.get(`/api/usersChallenges/${this.props.match.params.id}`).then((response) => {
-      this.setState({
-        challenges: response.data
-      })
+    axios.all([
+      axios.get("/api/userData").then(response => {
+        this.props.getUserData(response.data);
+  }),
+  
+  axios.get(`/api/usersChallenges/${this.props.match.params.id}`).then((response) => {
+    this.setState({
+      challenges: response.data
     })
+  }),
+  axios.get(`/api/profile/${this.props.match.params.id}`).then(response => {
+    this.setState({
+      user: response.data
+    })
+  }),
+  axios.get('/api/getUsers').then((response) => {
+    this.setState({
+      users: response.data,
+      loading: true
+    })
+
+  })
+    ])
+
 
     
                             
 
-    axios.get(`/api/profile/${this.props.match.params.id}`).then(response => {
-      this.setState({
-        user: response.data
-      });
-    });
 
-    axios.get('/api/getUsers').then((response) => {
-      this.setState({
-        users: response.data
-      })
-    })
   }
 
   // componentDidUpdate(prevProps, prevState) {
@@ -93,17 +101,18 @@ class Profile extends Component {
   };
 
 
-  async handleSave() {
-    await axios.put("/api/editUser", {
+  handleSave =() =>{
+    axios.put("/api/editUser", {
       email: this.state.email,
       description: this.state.description
     });
     this.setState({
       edit: false
     });
-    await axios
+    axios
       .get(`/api/profile/${this.props.match.params.id}`)
       .then(response => {
+        this.componentDidMount()
         this.setState({
           users: response.data
         });
@@ -121,17 +130,15 @@ class Profile extends Component {
       }
     }
 
-    challengeCount = () => {
-      return this.state.challenges.length;
-    }
-
-
+    
   render() {
-   
+    console.log(this.props.user)
+    console.log(this.state.email)
+    console.log(this.state.description)
     let displayChallenges = this.state.challenges.map((e, i) => {
       return (
         <div key={i}>
-          <div className="completedChallenge animated fadeIn">
+          <div className="completedChallenge animated fadeIn faster">
             <div className="nameddifficulty2 ">
               <h1 className="challengename" id="challengeinfo">{e.name}</h1>
               <h4 id="challengeinfo">Difficulty</h4>
@@ -159,11 +166,13 @@ class Profile extends Component {
         </div>
       )
     })
-    console.log(this.state.challenges)
+    
     let displayUser = this.state.user.map((user, i) => {
+      
       return (
-        <div>
-          <div className="Profile animated fadeIn faster">
+        
+        <div key={i}>
+          {this.state.loading ? <div className="Profile animated fadeIn faster">
             <div className="userblock" id="profileblocks">
               <div>
                 <div className="imgdiv">
@@ -289,16 +298,16 @@ class Profile extends Component {
                       <span style={{ color: "#b0b0b0" }}>
                         <strong>Completed Challenges:</strong>
                       </span>{" "}
-                      &nbsp; {this.challengeCount()}{" "}
+                      &nbsp; {this.state.challenges.length}{" "}
                     </span>
                   </div>
                 ) : (
 
 
                     <div className='challenge-body'>
-                      <h1>Completed Challenges</h1>
-
-                      {displayChallenges}
+                    
+                      { this.state.challenges.length === 0 ? <h1>No Completed Challenges 😂</h1>  : <div><h1>Completed Challenges</h1>{displayChallenges}</div>}
+                     
                     </div>
                  
 
@@ -308,7 +317,14 @@ class Profile extends Component {
               </div>
             </div>
             <div />
+          </div> : 
+          <div className='loader-container'>
+
+            <LoadingSpinner />
           </div>
+          
+          }
+          
         </div>
       );
     });

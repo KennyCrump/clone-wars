@@ -12,6 +12,20 @@ body {
   background-color: #303133;
   overflow-x: hidden;
 }
+.loader {
+  width: 30px;
+  height: auto;
+  margin-top: 300px;
+}
+
+/* .loader-container {
+  display: flex;
+  
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+} */
 
 .App {
   text-align: center;
