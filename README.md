@@ -19,25 +19,39 @@ as well as other statistics. Update your bio, share your profile with friends,
 and view other competitor's accomplishments.
 
 ## Contributors:
--[Kenneth Benioni] (https://github.com/kenabenioni) 
-    [LinkedIn] (https://www.linkedin.com/in/kenneth-benioni/)
--[Kaleb Manley] (https://github.com/klubb)
-    [LinkedIn] (https://www.linkedin.com/in/kaleb-manley/)
--[Kenny Crump] (https://github.com/KennyCrump)
-    [LinkedIn] (https://www.linkedin.com/in/kenny-crump/)
+  -[Kenneth Benioni](https://github.com/kenabenioni) 
+  ([LinkedIn](https://www.linkedin.com/in/kenneth-benioni/))
+
+  -[Kaleb Manley](https://github.com/klubb)
+  ([LinkedIn](https://www.linkedin.com/in/kaleb-manley/))
+
+  -[Kenny Crump](https://github.com/KennyCrump)
+  ([LinkedIn](https://www.linkedin.com/in/kenny-crump/))
 
 ## Technologies Used:
 -React.js
+
 -JavaScript
+
 -HTML
+
 -CSS
+
 -Node.js
+
 -PostgreSQL
+
 -Express
+
 -Redux
+
 -Axios
+
 -Massive
+
 -Code-Mirror
+
 -React-router-dom
+
 -React-router
 
