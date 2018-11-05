@@ -28,7 +28,7 @@ class Login extends Component {
   };
 
   dashboard = () => {
-    window.location.href = `${process.env.REACT_APP_SITE_HOST}/#/dashboard`
+    window.location.href = `${process.env.REACT_APP_SITE_HOST}#/dashboard`
   }
 
   render() {
