@@ -12,7 +12,7 @@ module.exports = {
       client_secret: CLIENT_SECRET,
       code: code,
       grant_type: "authorization_code",
-      redirect_uri: `http://${req.headers.host}/auth/callback`
+      redirect_uri: `${process.env.HTTP}://${req.headers.host}/auth/callback`
     };
 
     try {
