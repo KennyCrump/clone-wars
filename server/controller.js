@@ -105,7 +105,7 @@ module.exports = {
 
   logout: (req,res) => {
     req.session.destroy()
-    res.redirect(`${REACT_APP_SITE_HOST}/#/`)
+    res.redirect(`${process.env.REACT_APP_SITE_HOST}/#/`)
   },
   profile: (req,res) => {
     const db = req.app.get('db')
