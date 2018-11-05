@@ -9,6 +9,7 @@ const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING, ENVIRONMENT} = process.e
 
 app.use(express.json())
 
+app.use( express.static( `${__dirname}/../build` ) )
 
 massive(CONNECTION_STRING).then((db) => {
   app.set('db', db)
@@ -16,9 +17,6 @@ massive(CONNECTION_STRING).then((db) => {
     console.log(`server running on port ${SERVER_PORT}`)
   })
 })
-
-
-
 
 app.use(
     session({
