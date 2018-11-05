@@ -1,7 +1,26 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## KloneWars.com
+A CodeWars-inspired Javascript Challenge Workspace to help people push their JavaScript Skills to the next level.  
 
-Below you will find some information on how to perform common tasks.<br>
-You can find the most recent version of this guide [here](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md).
+## Features:
+
+Complete coding challenges - Push your skills to the limit as you complete harder and harder challenges. Unit tests will verify that your code passes the challenge, or give you insight into what needs changing in your code. 
+
+Create challenges - Have an interesting challenge? Create your own, with unit tests and a working solution, to push your peers to improve their skills. 
+
+Compare your skills with others - Completing challenges increases your score and allows you to rank up. See how you measure up to others in the leaderboard and work your way up to the top!
+
+Track your progress - Profile page tracks your completed challenges and solutions, as well as other statistics. Update your bio, share your profile with friends, and view other competitor's accomplishments.
+
+## Contributors:
+-[Kenneth Benioni] (https://github.com/kenabenioni) 
+    [LinkedIn] (https://www.linkedin.com/in/kenneth-benioni/)
+-[Kaleb Manley] (https://github.com/klubb)
+    [LinkedIn] (https://www.linkedin.com/in/kaleb-manley/)
+-[Kenny Crump] (https://github.com/KennyCrump)
+    [LinkedIn] (https://www.linkedin.com/in/kenny-crump/)
+
+## Technology Used:
+-
 
 ## Table of Contents
 
