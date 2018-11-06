@@ -67,7 +67,7 @@ class Dashboard extends Component {
   render() {
     let rank = 0
     let displayUsers = this.state.users.map((user, i) => {
-        console.log(user)
+        
         rank++
       return (
         
@@ -91,7 +91,7 @@ class Dashboard extends Component {
       challenge_id
     } = this.state.challenge;
     console.log(this.state.users);
-  
+    console.log(typeof instructions)
     return (
       <div className="dashboard">
         <Nav />
