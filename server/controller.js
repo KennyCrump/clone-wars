@@ -1,6 +1,8 @@
+require('dotenv').config()
+
 module.exports = {
   authCallback: async (req, res) => {
-    const { REACT_APP_DOMAIN, REACT_APP_CLIENT_ID, CLIENT_SECRET } = process.env
+    const { REACT_APP_DOMAIN, REACT_APP_CLIENT_ID, CLIENT_SECRET, REACT_APP_SITE_HOST } = process.env
     const axios = require('axios')
     const db = req.app.get("db");
     const { code } = req.query;
@@ -10,7 +12,7 @@ module.exports = {
       client_secret: CLIENT_SECRET,
       code: code,
       grant_type: "authorization_code",
-      redirect_uri: `http://${req.headers.host}/auth/callback`
+      redirect_uri: `${process.env.HTTP}://${req.headers.host}/auth/callback`
     };
 
     try {
@@ -103,7 +105,7 @@ module.exports = {
 
   logout: (req,res) => {
     req.session.destroy()
-    res.redirect('http://localhost:3000/#/')
+    res.redirect(`${process.env.REACT_APP_SITE_HOST}/#/`)
   },
   profile: (req,res) => {
     const db = req.app.get('db')
