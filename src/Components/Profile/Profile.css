@@ -227,6 +227,7 @@
     justify-content: center;
     align-content: center;
     align-items: center;
+    
 }
 
 .progress-body h1 {
@@ -261,6 +262,7 @@
     justify-content: space-evenly;
     margin: 0px 10px 20px 10px;
     box-shadow: 2px 3px 3px rgb(16, 16, 16);
+    
   }
 
   
