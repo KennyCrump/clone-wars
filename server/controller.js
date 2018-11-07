@@ -14,7 +14,7 @@ module.exports = {
       grant_type: "authorization_code",
       redirect_uri: `${process.env.HTTP}://${req.headers.host}/auth/callback`
     };
-
+      
     try {
       let tokenRes = await axios.post(
         `https://${REACT_APP_DOMAIN}/oauth/token`,
