@@ -13,6 +13,7 @@
     margin-right: 220px;
     margin-bottom: 20px;
     box-shadow: 2px 3px 3px rgb(16, 16, 16);
+    
 }
 h1 {
     color: #c9c9c9;
@@ -43,18 +44,22 @@ h1 {
     height: 100%;
     width: 100%;
     
+    overflow: scroll;
+    
 }
 
 .challenge-container {
     color: white;
     display: flex;
     align-items: center;
+    
 }
 
 .details {
-    margin: 18px;
+    margin: 25px;
     color: white;
     font-size: 18px;
+    
 }
 .rank-dash {
     cursor: pointer;

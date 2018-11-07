@@ -125,10 +125,11 @@ class Profile extends Component {
     for (let i = 0; i < users.length; i++) {
       if(users[i].user_id === this.state.user[0].user_id) {
         
-        return users.indexOf(users[i + 1])
-      } 
-      }
-    }
+        return users.indexOf(users[i += 1])
+   } 
+  }
+}
+    
 
     
   render() {
@@ -136,6 +137,7 @@ class Profile extends Component {
     console.log(this.state.email)
     console.log(this.state.description)
     let displayChallenges = this.state.challenges.map((e, i) => {
+      
       return (
         <div key={i}>
           <div className="completedChallenge animated fadeIn faster">
@@ -149,7 +151,7 @@ class Profile extends Component {
               </Link>
             </div>
             <div className="instruction">
-              <p>{e.instructions}</p>
+              <p>{e.instructions.length < 250 ? e.instructions : e.instructions.substring(0, 300)}...</p>
             </div>
           </div>
           <div className="list-small">

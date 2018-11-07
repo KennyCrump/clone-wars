@@ -67,6 +67,7 @@ class Dashboard extends Component {
   render() {
     let rank = 0
     let displayUsers = this.state.users.map((user, i) => {
+        
         rank++
       return (
         
