@@ -34,6 +34,11 @@ class Create extends Component {
     let tests = [...this.state.unitTests];
     let code = this.state.solution;
     let hasErrors = false;
+
+    if(!tests[0].result){
+      passedAllTests = false
+    }
+
     for (let i = 0; i < tests.length; i++) {
       let unitTest = code + "\n " + tests[i].test;
 
@@ -59,7 +64,7 @@ class Create extends Component {
         error: "",
         unitTests: tests,
         completed: passedAllTests,
-        solution: this.state.userCode
+        solution: this.state.solution
       });
     }
   };
@@ -69,8 +74,14 @@ class Create extends Component {
       test: this.state.newTest,
       result: this.state.newResult
     };
-    let unitTests = [...this.state.unitTests, newUnitTest];
-    this.setState({ unitTests: unitTests, newResult: "", newTest: "" });
+    if(!this.state.unitTests[0].result){
+      console.log('deleting first test')
+      let newUnitTests = [newUnitTest];
+      this.setState({ unitTests: newUnitTests, newResult: "", newTest: "" })
+    }else{
+      let unitTests = [...this.state.unitTests, newUnitTest];
+      this.setState({ unitTests: unitTests, newResult: "", newTest: "" });
+    }
   };
   deleteTest(i) {
     let unitTests = [...this.state.unitTests];
@@ -99,12 +110,13 @@ class Create extends Component {
   }
 
   render() {
+    console.log(this.state.unitTests)
     const options = {
       lineNumbers: true,
       theme: "icecoder"
     };
     let unitTestList = this.state.unitTests.map((test, index) => {
-      if (index !== 0) {
+      if (test.result) {
         if (typeof test.userAttempt === "number") {
           test.result = +test.result;
         }
@@ -112,25 +124,21 @@ class Create extends Component {
           return (
             <div className='unitTestList'>
 <button className='yellowButtons deleteButton' onClick={() => this.deleteTest(index)}>Delete</button>
-              <p key={index} className="failed">{`${test.test} should return ${
-                test.result
-              }`}</p>
+              <p key={index} className="failed">{`${test.test} should return ${test.result}`}</p> 
             </div>
           );
         } else if (test.result === test.userAttempt) {
           return (
             <div>
               <button className='yellowButtons deleteButton' onClick={() => this.deleteTest(index)}>Delete</button>
-              <p key={index} className="passed">{`${test.test} passed`}</p>
+              <p key={index} className="passed">{`${test.test} passed`}</p> 
             </div>
           );
         } else {
           return (
             <div>
 <button className='yellowButtons deleteButton' onClick={() => this.deleteTest(index)}>Delete</button>
-              <p key={index} className="failed">{`${test.test} should return ${
-                test.result
-              } but returned ${test.userAttempt}`}</p>
+              <p key={index} className="failed">{`${test.test} should return ${test.result} but returned ${test.userAttempt}`}</p>
             </div>
           );
         }
@@ -138,7 +146,7 @@ class Create extends Component {
         return null;
       }
     });
-    console.log(this.state.unitTests);
+    console.log(this.state.completed);
     return (
       <div className="outercreate">
         <Nav />
@@ -259,7 +267,10 @@ class Create extends Component {
           <button className="run yellowButtons" onClick={this.runCode}>
             Run
           </button>
-        <button className="run yellowButtons" onClick={this.submitChallenge}>Submit!</button>
+          {this.state.completed ? <button className="run yellowButtons" onClick={this.submitChallenge}>Submit!</button>
+                        :
+                        <button className="submit yellowButtons" disabled>Pass All Tests to Submit</button>}
+        
               </div>
             </div>
           </div>
