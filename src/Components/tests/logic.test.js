@@ -4,17 +4,24 @@ const completedChallenges = [{challenge_id: 3, solution: 'hey', difficulty: 3}, 
 const completedChallenges2 = [{challenge_id: 3, solution: 'hey', difficulty: 7}, {challenge_id: 4, solution: 'hello', difficulty: 8}, {challenge_id: 7, solution: 'hello', difficulty: 6}]
 const info = [
   {
-rank: "1",
-score: 10000,
-user_id: 4,
-username: "Joe"},
-{
-rank: "3",
-score: 10,
-user_id: 4,
-username: "Bob"
-}
-]
+ rank: "1",
+ score: 10000,
+ user_id: 4,
+ username: "Joe"},
+ {
+ rank: "3",
+ score: 10,
+ user_id: 4,
+ username: "Bob"
+ }
+ ]
+ const user = [{
+ rank: "1",
+ score: 10000,
+ user_id: 4,
+ username: "Joe"
+ }
+ ]
 
 describe("challenge list returns correct info", () => {
   test(" returns array", () => {
@@ -59,29 +66,27 @@ describe("user score is accurately calculated", () => {
 })
 
 
+
 describe("sorting users is correctly done", () => {
   test("function should accept only an array", () => {
-    expect(sortUsers('hello')).toBeUndefined()
-    expect(sortUsers(20)).toBeUndefined()
-    expect(sorUsers({})).toBeUndefined()
+    expect(sortUsers('hello', user)).toBeUndefined()
+    expect(sortUsers(20, user)).toBeUndefined()
+    expect(sortUsers({}, user)).toBeUndefined()
   })
-
+ 
   test("make sure it returns valid information", () => {
-    expect(sortUsers(info)).toBeDefined()
+    expect(sortUsers(info, user)).toBeDefined()
   })
-
+ 
   test("the function needs to have a user_id property", () => {
-    expect(sortUsers(info)).toHaveProperty('user_id')
+    expect(info[0]).toHaveProperty("user_id")
   })
-
+ 
   test("returns a the number at whatever index you are at", () => {
-    expect(sortUsers(info)).not.toBeNaN()
+    expect(sortUsers(info,user)).not.toBeNaN()
   })
-
+ 
   test("returned number needs to be added by one", () => {
-    expect(sortUsers(info[0])).toBe(1)
+    expect(sortUsers(info, user)).toEqual(1)
   })
-
-  
-})
-
+ })
