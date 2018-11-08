@@ -16,6 +16,7 @@ username: "Bob"
 }
 ]
 
+
 // describe("challenge list returns correct info", () => {
 //   test(" returns array", () => {
 //     expect();
@@ -60,6 +61,7 @@ describe("user score is accurately calculated", () => {
 })
 
 
+
 describe("sorting users is correctly done", () => {
   test("function should accept only an array", () => {
     expect(sortUsers('hello')).toBeUndefined()
@@ -85,4 +87,3 @@ describe("sorting users is correctly done", () => {
 
   
 })
-
