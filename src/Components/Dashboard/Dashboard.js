@@ -89,8 +89,7 @@ class Dashboard extends Component {
       difficulty,
       challenge_id
     } = this.state.challenge;
-    console.log(this.state.users);
-    console.log(typeof instructions)
+  
     return (
       <div className="dashboard">
         <Nav />
