@@ -16,30 +16,29 @@ username: "Bob"
 }
 ]
 
-// describe("challenge list returns correct info", () => {
-//   test(" returns array", () => {
-//     expect();
-//   });
-//   test("each item is an object", () => {
-//     expect();
-//   });
-// });
-// describe("check user info", () => {
-//   test("user score exists", () => {
-//     expect();
-//   });
-//   test("user score is number", () => {
-//     expect();
-//   });
-//   test("rank exists and or accurate", () => {
-//     expect();
-//   });
-// });
-// describe("edit user info", () => {
-//   test("user info has updated", () => {
-//     expect();
-//   });
-// });
+describe("challenge list returns correct info", () => {
+  test(" returns array", () => {
+    expect(Array.isArray(completedChallenges)).toBeTruthy();
+  });
+  test("each item is an object", () => {
+    expect(typeof completedChallenges[0]).toBe("object");
+  });
+});
+describe("check user info", () => {
+  test("user score exists", () => {
+    expect(info[0].score).toBeDefined()
+  });
+  test("user score is number", () => {
+    expect(typeof info[0].score).toBe("number");
+  });
+  test("rank exists", () => {
+    expect(info[0].rank).toBeDefined();
+  });
+  test("rank is a string", () => {
+    expect(typeof info[0].rank).toBe("string");
+  })
+});
+
 describe("user score is accurately calculated", () => {
   test("items in array have a difficulty prop", () => {
     expect(completedChallenges[0]).toHaveProperty('difficulty')
