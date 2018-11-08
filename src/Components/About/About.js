@@ -60,6 +60,7 @@ class About extends Component {
                         <a href="https://github.com/KennyCrump"><button className="profilelink">GitHub</button></a>
                     </div>
                     <div className="aboutus">
+                        <img src="https://media.licdn.com/dms/image/C5603AQEJwF3GURNGUw/profile-displayphoto-shrink_800_800/0?e=1547078400&v=beta&t=6fkTU3I8iNDU-e8XVf7VWU6zAFIVNJApn-cxK-sLNi4" className="profileimg"/>
                         <h1>Kaleb Manley</h1>
                         <a href="https://www.linkedin.com/in/kaleb-manley/"><button className="profilelink">Linkedin</button></a>
                         <a href="https://github.com/klubb"><button className="profilelink">GitHub</button></a>
