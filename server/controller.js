@@ -129,7 +129,6 @@ module.exports = {
     const {user_id} = req.session.user
     db.submit_challenge({name, instructions, starting_code, difficulty: +difficulty, solution, creator: +user_id}).then(response => {
       res.status(200).send(response)
-      console.log('challenge added, ID: ', response)
     })
   },
   submitTest: (req, res) => {
@@ -143,8 +142,28 @@ module.exports = {
     const db = req.app.get('db')
     let {challenge_id, solution, completed} = req.body
     let {user_id} = req.session.user
-    db.submit_solution({challenge_id: + challenge_id, solution, completed, user_id: +user_id}).then(response => {
-      res.status(200).send(console.log('solution added'))
+    db.submit_solution({challenge_id: + challenge_id, solution, completed, user_id: +user_id}).then((response) => {
+    }).then(()=>{
+      db.get_completed_challenges({user_id: +user_id}).then((response)=> {
+        let  score = 0
+        for(let i = 0; i < response.length; i++){
+            switch(response[i].difficulty){
+                case '1': score += 1; break;
+                case '2': score += 3; break;
+                case '3': score += 9; break;
+                case '4': score += 20; break;
+                case '5': score += 40; break;
+                case '6': score += 80; break;
+                case '7': score += 160; break;
+                case '8': score += 320; break;
+                case '9': score += 640; break;
+                case '10': score += 1000; break;
+            }
+        }
+        db.update_user_score({score: score, user_id: +user_id}).then((score)=>{
+          res.status(200).send(score)
+        })
+      })
     })
   },
 
