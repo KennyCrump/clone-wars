@@ -6,6 +6,7 @@ import { getUserData } from "../../ducks/reducer";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import LoadingSpinner from '../Loading/LoadingSpinner'
+import {sortUsers} from '../Logic/logic'
 
 class Profile extends Component {
   constructor(props) {
@@ -119,16 +120,15 @@ class Profile extends Component {
       });
   }
 
-  sortUsers = () => {
-    const {users} = this.state
-    const {user}= this.state
-    for (let i = 0; i < users.length; i++) {
-      if(users[i].user_id === this.state.user[0].user_id) {
+//   sortUsers = (users, user) => {
+   
+//     for (let i = 0; i < users.length; i++) {
+//       if(users[i].user_id === user[0].user_id) {
         
-        return users.indexOf(users[i += 1])
-   } 
-  }
-}
+//         return users.indexOf(users[i += 1])
+//    } 
+//   }
+// }
     
 
     
@@ -292,7 +292,7 @@ class Profile extends Component {
                       <span style={{ color: "#b0b0b0" }}>
                         <strong>Leaderboard Position: </strong>
                       </span>{" "}
-                      &nbsp; #{this.sortUsers(this.state.users)}{" "}
+                      &nbsp; #{sortUsers(this.state.users, this.state.user)}{" "}
                     </span>
                     <br />
                     <span>
