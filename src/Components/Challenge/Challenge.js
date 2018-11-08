@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import CodeMirror from 'react-codemirror';
 import axios from 'axios'
 import Nav from '../Nav/Nav'
+import { updateUserScore } from "../../ducks/reducer";
+import { connect } from "react-redux";
 
 import './Challenge.css'
 require('codemirror/lib/codemirror.css');
@@ -46,8 +48,9 @@ class Challenge extends Component {
     submitSolution = () => {
         let {solution, completed} = this.state
         let challenge_id = this.props.match.params.id
-        axios.post(`/api/challenge/solution`, {solution, completed, challenge_id}).then(res => {
+        axios.post(`/api/challenge/solution`, {solution, completed, challenge_id}).then(score => {
             alert('Submitted Successfully')
+            this.props.updateUserScore(+score.data[0].score)
         })
     }
 
@@ -80,7 +83,6 @@ class Challenge extends Component {
     }
     
     render() { 
-        console.log(this.state.unitTests)
         const options = {
             lineNumbers: true,
             theme: 'icecoder'
@@ -139,5 +141,15 @@ class Challenge extends Component {
         );
     }
 }
+
+function mapStateToProps(state) {
+    return {
+      user: state.user
+    };
+  }
+  
+  export default connect(
+    mapStateToProps,
+    { updateUserScore }
+  )(Challenge);
  
-export default Challenge;
