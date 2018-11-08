@@ -37,8 +37,7 @@ class Dashboard extends Component {
     });
     
 
-    let random =
-      filterChallenge[Math.floor(Math.random() * filterChallenge.length)];
+    let random = filterChallenge[Math.floor(Math.random() * filterChallenge.length)];
     this.setState(
       {
         challenge: random
@@ -52,7 +51,7 @@ class Dashboard extends Component {
     let filterChallenge = challenges.filter((challenge, i) => {
       return challenge.difficulty > this.props.user.rank;
     });
-    // console.log(filterChallenge)
+    
 
     let random =
       filterChallenge[Math.floor(Math.random() * filterChallenge.length)];
