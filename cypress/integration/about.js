@@ -18,5 +18,4 @@ describe('can go to about page', () => {
         cy.viewport(1600, 660)
         cy.get('[href="#/about"] > #navbuttons').click()
     })
-
 })
