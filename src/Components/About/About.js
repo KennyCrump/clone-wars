@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './About.css';
 import Nav from '../Nav/Nav';
+import Ken from './profile_img/EDIT-7646.JPG';
+import Kenny from './profile_img/EDIT-7791.JPG';
+import {Link} from 'react-router-dom';
 
 class About extends Component {
     constructor(props) {
@@ -51,13 +54,21 @@ class About extends Component {
                 </div>
                 <div className="us">
                     <div className="aboutus">
+                    <img src={Kenny} className="profileimg"/>
                         <h1>Kenny Crump</h1>
+                        <a href="https://www.linkedin.com/in/kenny-crump/"><button className="profilelink">Linkedin</button></a>
+                        <a href="https://github.com/KennyCrump"><button className="profilelink">GitHub</button></a>
                     </div>
                     <div className="aboutus">
                         <h1>Kaleb Manley</h1>
+                        <a href="https://www.linkedin.com/in/kaleb-manley/"><button className="profilelink">Linkedin</button></a>
+                        <a href="https://github.com/klubb"><button className="profilelink">GitHub</button></a>
                     </div>
                     <div className="aboutus"> 
+                        <img src={Ken} className="profileimg"/>
                         <h1>Kenneth Benioni</h1>
+                        <a href="https://www.linkedin.com/in/kenneth-benioni/"><button className="profilelink">Linkedin</button></a>
+                        <a href="https://github.com/kenabenioni"><button className="profilelink">GitHub</button></a>
                     </div>
                 </div>
             </div>
