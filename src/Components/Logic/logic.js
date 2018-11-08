@@ -19,3 +19,14 @@ const axios = require('axios');
         }
         return score
     }
+
+
+    export function sortUsers(users, user) {
+   
+        for (let i = 0; i < users.length; i++) {
+          if(users[i].user_id === user[0].user_id) {
+            
+            return users.indexOf(users[i += 1])
+       } 
+      }
+    }
