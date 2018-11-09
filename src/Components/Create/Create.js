@@ -132,14 +132,14 @@ class Create extends Component {
           );
         } else if (test.result === test.userAttempt) {
           return (
-            <div>
+            <div className='unitTestList'>
               <button className='yellowButtons deleteButton' onClick={() => this.deleteTest(index)}>Delete</button>
               <p key={index} className="passed">{`${test.test} passed`}</p> 
             </div>
           );
         } else {
           return (
-            <div>
+            <div className='unitTestList'>
 <button className='yellowButtons deleteButton' onClick={() => this.deleteTest(index)}>Delete</button>
               <p key={index} className="failed">{`${test.test} should return ${test.result} but returned ${test.userAttempt}`}</p>
             </div>
