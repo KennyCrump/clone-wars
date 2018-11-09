@@ -51,7 +51,7 @@ class Dashboard extends Component {
   getRandom = () => {
     const { challenges } = this.state;
     let filterChallenge = challenges.filter((challenge, i) => {
-      return challenge.difficulty > this.props.user.rank;
+      return challenge.difficulty >= this.props.user.rank;
     });
     
 
