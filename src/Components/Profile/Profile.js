@@ -133,9 +133,8 @@ class Profile extends Component {
 
     
   render() {
-    console.log(this.props.user)
-    console.log(this.state.email)
-    console.log(this.state.description)
+    console.log(this.state.users)
+    console.log(this.state.user)
     let displayChallenges = this.state.challenges.map((e, i) => {
       
       return (

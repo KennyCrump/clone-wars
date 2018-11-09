@@ -16,10 +16,9 @@
     /* border: 1px white solid; */
 }
 
-/* .userblock {
-    display: flex;
-    flex-direction: column;
-} */
+.userblock {
+    box-shadow: 2px 3px 3px rgb(16, 16, 16);
+}
 
 .rank-score {
     display: flex;
@@ -217,6 +216,7 @@
     flex-direction: column;
     align-content: center;
     justify-content: center;
+    box-shadow: 2px 3px 3px rgb(16, 16, 16);
     /* border: 1px white solid; */
 }
 
