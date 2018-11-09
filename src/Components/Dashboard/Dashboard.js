@@ -5,6 +5,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { getUserData } from "../../ducks/reducer";
 import { connect } from "react-redux";
+import LoadingSpinner from '../Loading/LoadingSpinner'
 
 class Dashboard extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class Dashboard extends Component {
       rankedChallenge: [],
       challenges: [],
       challenge: [],
-      loading: true,
+      loading: false,
       users: []
     };
   }
@@ -26,7 +27,8 @@ class Dashboard extends Component {
 
     let users = await axios.get("/api/getUsers");
     this.setState({
-      users: users.data
+      users: users.data,
+      loading: true
     });
     console.log(this.state.users);
 
@@ -93,7 +95,7 @@ class Dashboard extends Component {
     return (
       <div className="dashboard">
         <Nav />
-        <div className="Challenges" id="blocks">
+        {this.state.loading ?<div> <div className="Challenges" id="blocks">
           <div className="left-side">
             <div className="challenge">
               <h3 className="your-challenge">Your Next Challenge...</h3>
@@ -127,12 +129,8 @@ class Dashboard extends Component {
               <p align="left">{instructions}</p>
             </div>
           </div>
-        </div>
-
-
-        {/* <div className='create'></div> */}
-
-        <div className="leaderboard">
+        </div> 
+         <div className="leaderboard">
           <table>
             <thead>
               <tr>
@@ -143,7 +141,8 @@ class Dashboard extends Component {
             </thead>
             {displayUsers}
           </table>
-        </div>
+        </div> 
+           </div>   : <LoadingSpinner /> }
       </div>
     );
   }
