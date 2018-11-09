@@ -88,6 +88,8 @@ h4 {
 
 .instruction {
   width: 30vw;
+  height: 135px;
+  overflow-y: auto;
   padding: 10px;
 }
 

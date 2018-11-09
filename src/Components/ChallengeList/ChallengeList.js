@@ -3,6 +3,7 @@ import axios from "axios";
 import Nav from "../Nav/Nav";
 import "./ChallengeList.css";
 import { Link } from "react-router-dom";
+import stacky from './stacky.png'
 
 class ChallengeList extends Component {
   constructor(props) {
@@ -146,18 +147,18 @@ class ChallengeList extends Component {
               </div>
               <hr/>
               <div className="ad">
-              <img src="https://freegames.org/images/2048-solitaire-1200.png" alt="" className="adpic"/>
+              <img src={stacky} alt="" className="adpic"/>
               <div className="titleinfo">
-              <h5 className="adtitle">Tetris 2048</h5>
+              <h5 className="adtitle">Stacky Game</h5>
               <p className="adinfo">It's like 2048 and Tetris had a baby. Try it dude!</p>
-              <p className="adsby">ads by klonewars</p>
+              <p className="adsby">ads by KodeWars</p>
               </div>
               </div>
               <div className="adsmall">
-              <img src="https://freegames.org/images/2048-solitaire-1200.png" alt="" className="adpic"/>
+              <img src={stacky} alt="" className="adpic"/>
               <div className="titleinfo">
-              <h5 className="adtitle">Tetris 2048</h5>
-              <p className="adsby">ads by klonewars</p>
+              <h5 className="adtitle">Stacky 2048</h5>
+              <p className="adsby">ads by KodeWars</p>
               </div>
               </div>
               <Link to={"/create"}>
