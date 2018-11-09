@@ -106,7 +106,10 @@ class Create extends Component {
               axios.post('/api/challenges/unittest', {test: unitTests[i].test, result: unitTests[i].result, challenge_id: +challenge_id})
           }
           axios.post('/api/challenges/solution', {challenge_id: +challenge_id, solution: solution, completed: true})
-      })
+      }).then(() => {
+        alert('challenge successfully added')
+        window.location = `${process.env.REACT_APP_SITE_HOST}/#/dashboard`
+    })
   }
 
   render() {
