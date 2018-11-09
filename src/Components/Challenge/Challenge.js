@@ -51,6 +51,8 @@ class Challenge extends Component {
         axios.post(`/api/challenge/solution`, {solution, completed, challenge_id}).then(score => {
             alert('Submitted Successfully')
             this.props.updateUserScore(+score.data[0].score)
+        }).then(() => {
+            window.location = `${process.env.REACT_APP_SITE_HOST}/#/dashboard`
         })
     }
 

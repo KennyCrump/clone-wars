@@ -10,7 +10,7 @@ describe('can choose a challenge', () => {
         cy.get('.run').click()
     })
     it('can hover menu', () => {
-        cy.get('.navsmall > .right-nav > .dropdown > .user-info').trigger('mousever')
+        cy.get('.navsmall > .right-nav > .dropdown > .user-info').trigger('mouseover')
     })
     it('can select about tab', () => {
         cy.viewport(1600, 660)
