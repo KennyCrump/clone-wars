@@ -3,7 +3,7 @@ import './About.css';
 import Nav from '../Nav/Nav';
 import Ken from './profile_img/EDIT-7646.JPG';
 import Kenny from './profile_img/EDIT-7791.JPG';
-import {Link} from 'react-router-dom';
+import Kaleb from './profile_img/kaleb-profile.jpeg'
 
 class About extends Component {
     constructor(props) {
@@ -60,7 +60,7 @@ class About extends Component {
                         <a href="https://github.com/KennyCrump"><button className="profilelink">GitHub</button></a>
                     </div>
                     <div className="aboutus">
-                        <img src="https://media.licdn.com/dms/image/C5603AQEJwF3GURNGUw/profile-displayphoto-shrink_800_800/0?e=1547078400&v=beta&t=6fkTU3I8iNDU-e8XVf7VWU6zAFIVNJApn-cxK-sLNi4" className="profileimg"/>
+                        <img src={Kaleb} className="profileimg"/>
                         <h1>Kaleb Manley</h1>
                         <a href="https://www.linkedin.com/in/kaleb-manley/"><button className="profilelink">Linkedin</button></a>
                         <a href="https://github.com/klubb"><button className="profilelink">GitHub</button></a>
